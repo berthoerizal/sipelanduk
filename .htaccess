@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^dokumenkami\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.dokumenkami\.com$
+RewriteRule ^(.*)$ "https\:\/\/dokumenkami\.com\/$1" [R=301,L]
+
