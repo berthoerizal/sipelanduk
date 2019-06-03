@@ -32,6 +32,12 @@ class Pengelola_model extends CI_Model {
 	{
 		$query=$this->db->get_where('user',array('id_user'=>$id_user));
 		return $query->row();
+    }
+    
+    public function detail_profile($username)
+	{
+		$query=$this->db->get_where('user',array('username'=>$username));
+		return $query->row();
 	}
 
 	//tambah data

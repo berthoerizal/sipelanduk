@@ -14,4 +14,9 @@ class Home extends CI_Controller {
 		$data = array('title' => 'Home', 'isi' => 'admin/home/list' );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
     }
+
+    public function detail($username)
+    {
+        # code...
+    }
 }

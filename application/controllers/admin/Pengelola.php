@@ -45,4 +45,6 @@ class Pengelola extends CI_Controller {
              redirect(base_url('admin/pengelola'));
          }
      }
+
+    
 }

@@ -36,9 +36,11 @@
                 <tr>
                   <td><?php echo $user->nama; ?></td>
                   <td><?php echo $user->email; ?><br><?php echo $user->nomor_telepon ?></td>
-                  <td><?php if($user->akses_level==1) { echo "Pengelola"; } else { echo "Pengguna"; } ?></td>
+                  <td><?php if($user->akses_level==21) { echo "Pengelola"; } else { echo "Pengguna"; } ?></td>
                   <td><?php echo date("d M Y", strtotime( $user->tanggal_daftar)); ?></td>
-                  <td></td>
+                  <td>
+                  <a href="<?php echo base_url('admin/pengelola/detail/'.$user->username); ?>" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> Detail</a>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>
