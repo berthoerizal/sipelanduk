@@ -24,7 +24,7 @@
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Nama</th>
+                  <th class="wd-15p">username</th>
                   <th class="wd-15p">Email</th>
                   <th class="wd-20p">Nomor Telepon</th>
                   <th class="wd-15p">Tanggal Terdaftar</th>
@@ -34,7 +34,7 @@
               <tbody>
               <?php foreach($user as $user) { ?>
                 <tr>
-                  <td><?php echo $user->nama; ?></td>
+                  <td><?php echo $user->username; ?></td>
                   <td><?php echo $user->email; ?><br><?php echo $user->nomor_telepon ?></td>
                   <td><?php if($user->akses_level==21) { echo "Pengelola"; } else { echo "Pengguna"; } ?></td>
                   <td><?php echo date("d M Y", strtotime( $user->tanggal_daftar)); ?></td>

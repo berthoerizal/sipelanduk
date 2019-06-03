@@ -12,7 +12,7 @@ class Pengelola_model extends CI_Model {
 	public function listing()
 	{
 		$query=$this->db->get('user');
-		return $query->result();
+		return $query->result(); 
 	}
 
 	public function listing_admin()

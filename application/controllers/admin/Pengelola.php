@@ -35,7 +35,7 @@ class Pengelola extends CI_Controller {
              $data = array(	
                              'nama' => $this->input->post('username'), 
                              'username' => $this->input->post('username'), 
-                              'password' => sha1($this->input->post('password')), 
+                             'password' => sha1($this->input->post('password')), 
                              'akses_level' => $this->input->post('akses_level'),
                              'id_kota' => $this->input->post('id_kota')
                              ); 
