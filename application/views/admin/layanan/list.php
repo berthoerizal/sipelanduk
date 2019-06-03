@@ -24,14 +24,16 @@
             <table id="datatable1" class="table display responsive nowrap">
               <thead>
                 <tr>
-                  <th class="wd-15p">Kota</th>
+                  <th class="wd-15p">Layanan</th>
+                  <th class="wd-10p">Kategori Layanan</th>
                   <th class="wd-5p">Aksi</th>
                 </tr>
               </thead>
               <tbody>
-              <?php foreach($kota as $kota) { ?>
+              <?php foreach($layanan as $layanan) { ?>
                 <tr>
-                  <td><?php echo $kota->nama_kota; ?></td>
+                  <td><?php echo $layanan->nama_layanan; ?></td>
+                  <td><?php if($layanan->kategori_layanan==1) { echo "Pendaftaran Penduduk"; } else { echo "Pencatatan Sipil"; } ?></td>
                   <td>
                   <?php include('edit.php'); ?>
                   <?php include('hapus.php'); ?>

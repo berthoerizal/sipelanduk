@@ -18,7 +18,7 @@
             }
             //error validasi
             echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
-          <div class="table-wrapper">
+          <div class="table-wrapper  table-responsive">
             <?php include('tambah.php'); ?>
             <br><br>
             <table id="datatable1" class="table display responsive nowrap">
