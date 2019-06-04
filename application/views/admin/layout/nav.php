@@ -26,9 +26,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('admin/konfigurasi'); ?>">
-              <i class="icon ion-ios-gear-outline"></i>
-              <span>Konfigurasi</span>
+            <a class="nav-link" href="<?php echo base_url('admin/layanan/input'); ?>">
+              <i class="icon ion-ios-paper-outline"></i>
+              <span>Input Data</span>
             </a>
           </li>
         </ul>

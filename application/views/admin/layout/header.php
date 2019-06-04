@@ -15,6 +15,7 @@
             <div class="dropdown-menu dropdown-menu-right">
               <nav class="nav">
                 <a href="<?php echo base_url('admin/pengelola/detail/'.$this->session->userdata('username')); ?>" class="nav-link"><i class="icon ion-person"></i> Profile</a>
+                <a href="<?php echo base_url('admin/konfigurasi'); ?>" class="nav-link"><i class="icon ion-gear-a"></i> Konfigurasi</a>
                 <a href="<?php echo base_url('login/logout'); ?>" class="nav-link"><i class="icon ion-forward"></i> Sign Out</a>
               </nav>
             </div><!-- dropdown-menu -->

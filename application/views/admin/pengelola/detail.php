@@ -68,11 +68,13 @@
               </div><!-- col-4 -->
             </div><!-- row -->
             <div class="form-layout-footer bd pd-20 bd-t-0">
-              <button type="submit" name="submit" class="btn btn-primary bd-0">Submit Form</button>
-              <button class="btn btn-secondary bd-0">Cancel</button>
+              <button type="submit" name="submit" class="btn btn-primary bd-0">Simpan</button>
+              <button class="btn btn-secondary bd-0" type="reset" >Reset</button>
+              
+          <?php echo form_close(); ?>
+              <?php include('updatepassword.php'); ?>
             </div><!-- form-group -->
           </div><!-- form-layout -->
-          <?php echo form_close(); ?>
         </div><!-- section-wrapper -->
       </div><!-- container -->
     </div><!-- slim-mainpanel -->

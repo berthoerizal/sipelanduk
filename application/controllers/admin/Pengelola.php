@@ -110,5 +110,28 @@ class Pengelola extends CI_Controller {
         }
     } 
 
-    
+    public function updatepassword($username)
+    {
+        $user=$this->pengelola_model->detail_profile($username);
+        $kota=$this->kota_model->listing();
+        $this->form_validation->set_rules('password', 'Password', 'required|max_length[12]|min_length[6]', array(
+            'required' => 'Password harus diisi',
+            'max_lenght' => 'Password maksimal 12 karakter',
+            'min_length' => 'Password minimal 6 karakter'));
+        $this->form_validation->set_rules('confirm_password','Confirm Password','required|matches[password]', array(  'required' => 'Konfirmasi Password harus diisi',
+                'matches' => 'Konfirmasi Password tidak sesuai')); 
+        
+        if($this->form_validation->run() === FALSE){
+            redirect('admin/pengelola/detail/'.$username);
+        } else {
+            $data = array(	'username'=> $username,
+                            'password'    => sha1($this->input->post('password'))
+                            );  
+
+            $this->pengelola_model->update($data);
+            $this->session->set_flashdata('sukses','Password telah diupdate');
+            redirect(base_url('admin/pengelola/detail/'.$user->username));
+        }
+        redirect('admin/pengelola/detail/'.$username);
+    }
 }

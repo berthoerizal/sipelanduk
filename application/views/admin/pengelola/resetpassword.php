@@ -13,7 +13,7 @@
                <h4>Yakin ingin reset password <?php echo $user->username ?></h4>
           </div>
           <div class="modal-footer">
-            <a href="<?php echo base_url('admin/pengelola/resetpassword/'.$user->username); ?>" class="btn btn-primary" >Reset</a>
+            <a href="<?php echo base_url('admin/pengelola/resetpassword/'.$user->username); ?>" class="btn btn-primary" >Reset Password</a>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
