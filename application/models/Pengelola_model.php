@@ -58,6 +58,13 @@ class Pengelola_model extends CI_Model {
 		$this->db->delete('user', $data);
 	}
 
+	public function update_password($username, $data)
+	{
+		$this->db->where('username', $username);
+    	$query = $this->db->update('user', $data);
+    	return TRUE;
+	}
+
 }
 
 /* End of file Pengelola_model.php */

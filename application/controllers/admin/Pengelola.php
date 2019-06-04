@@ -93,7 +93,22 @@ class Pengelola extends CI_Controller {
         $this->pengelola_model->delete($data);
         $this->session->set_flashdata('sukses', 'Pengelola telah dihapus');
         redirect(base_url('admin/pengelola'));
-	}
+    }
+    
+    public function resetpassword($username){
+        $karakter = "ABCDEFGHIJKLMNOPQRSTUVWQYZ1234567890";
+        $password = substr(str_shuffle($karakter),0,8);
+        $datas = array(
+            'password' => sha1($password)
+        );
+
+        $validasi = $this->pengelola_model->update_password($username, $datas);
+
+        if($validasi){
+        	$this->session->set_flashdata('sukses','Reset Password dengan username : '.$username.' Sukses. Simpan Password Berikut : '.$password);
+			redirect(base_url('admin/pengelola'));
+        }
+    } 
 
     
 }

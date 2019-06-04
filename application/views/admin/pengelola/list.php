@@ -41,6 +41,7 @@
                   <td>
                   <a href="<?php echo base_url('admin/pengelola/detail/'.$user->username); ?>" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> Detail</a>
                   <?php include('hapus.php'); ?>
+                  <?php include('resetpassword.php'); ?>
                   </td>
                 </tr>
                 <?php } ?>
