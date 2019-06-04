@@ -18,28 +18,29 @@
             }
             //error validasi
             echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
-          <div class="table-wrapper  table-responsive">
+          <div class="table-responsive">
             <?php include('tambah.php'); ?>
             <br><br>
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable1" class="table mg-b-0">
               <thead>
                 <tr>
-                  <th class="wd-15p">username</th>
-                  <th class="wd-15p">Email</th>
-                  <th class="wd-20p">Nomor Telepon</th>
-                  <th class="wd-15p">Tanggal Terdaftar</th>
-                  <th class="wd-10p">Aksi</th>
+                  <th>username</th>
+                  <th>Akses Level</th>
+                  <th class="wd-20p">Aksi</th>
                 </tr>
               </thead>
               <tbody>
               <?php foreach($user as $user) { ?>
                 <tr>
-                  <td><?php echo $user->username; ?></td>
-                  <td><?php echo $user->email; ?><br><?php echo $user->nomor_telepon ?></td>
-                  <td><?php if($user->akses_level==21) { echo "Pengelola"; } else { echo "Pengguna"; } ?></td>
-                  <td><?php echo date("d M Y", strtotime( $user->tanggal_daftar)); ?></td>
+                  <td><b><?php echo $user->username; ?></b>
+                    <?php if($user->akses_level!=21){ ?>
+                      <br>Kota/Kabupaten:<br><span style="color: blue;"><?php echo $user->nama_kota; ?></span>
+                    <?php } ?>
+                  </td>
+                  <td><?php if($user->akses_level==21) { echo "Pengelola"; } elseif($user->akses_level==10) { echo "Pengguna"; } else { echo "Tidak Diketahui"; } ?></td>
                   <td>
                   <a href="<?php echo base_url('admin/pengelola/detail/'.$user->username); ?>" class="btn btn-primary btn-sm"><i class="fa fa-user"></i> Detail</a>
+                  <?php include('hapus.php'); ?>
                   </td>
                 </tr>
                 <?php } ?>

@@ -8,12 +8,13 @@ class Pengelola extends CI_Controller {
  		parent::__construct();
          //Do your magic here
          $this->load->model('pengelola_model');
-         
+         $this->load->model('kota_model');
  	}
 
      public function index()
      {
          $user=$this->pengelola_model->listing();
+         $kota=$this->kota_model->listing();
          $valid= $this->form_validation;
          $valid->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', array(
              'required' => 'Username user harus diisi',
@@ -28,7 +29,8 @@ class Pengelola extends CI_Controller {
              $data = array(
              'title' => 'Pengelola',
              'isi' => 'admin/pengelola/list',
-             'user' => $user
+             'user' => $user,
+             'kota'=> $kota
              );
              $this->load->view('admin/layout/wrapper', $data, FALSE);
          } else {
@@ -45,6 +47,53 @@ class Pengelola extends CI_Controller {
              redirect(base_url('admin/pengelola'));
          }
      }
+
+     public function detail($username)
+     {
+        $user=$this->pengelola_model->detail_profile($username);
+        $kota=$this->kota_model->listing();
+        $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama harus diisi'));
+ 
+         if($this->form_validation->run() === FALSE){
+ 
+             $data = array(
+                 'title' 	=> 'Profile', 
+                 'isi' 		=> 'admin/pengelola/detail',
+                 'user'	=> $user,
+                'kota' => $kota);
+             $this->load->view('admin/layout/wrapper', $data);
+ 
+         } else {
+            $data = array(	'username'=> $username,
+                            'nama'    => $this->input->post('nama'), 
+                            'id_kota' => $this->input->post('id_kota'),
+                            'email'   => $this->input->post('email'),
+                            'nomor_telepon' => $this->input->post('nomor_telepon'),
+                            'akses_level' => $this->input->post('akses_level')
+                            );  
+ 
+             $this->pengelola_model->update($data);
+             $this->session->set_flashdata('sukses','Pengelola telah diedit');
+             redirect(base_url('admin/pengelola/detail/'.$user->username));
+         }
+
+         $data = array(
+            'title' 	=> 'Profile', 
+            'isi' 		=> 'admin/pengelola/detail',
+            'user'	=> $user,
+           'kota' => $kota);
+        $this->load->view('admin/layout/wrapper', $data);
+        
+     }
+
+     public function hapus($id_user)
+	{
+		$user=$this->pengelola_model->detail($id_user);
+        $data = array('id_user' => $user->id_user );
+        $this->pengelola_model->delete($data);
+        $this->session->set_flashdata('sukses', 'Pengelola telah dihapus');
+        redirect(base_url('admin/pengelola'));
+	}
 
     
 }

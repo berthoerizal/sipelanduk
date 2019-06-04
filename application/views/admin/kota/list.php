@@ -18,10 +18,10 @@
             }
             //error validasi
             echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
-          <div class="table-wrapper table-responsive">
+          <div class="table-responsive">
             <?php include('tambah.php'); ?>
             <br><br>
-            <table id="datatable1" class="table display responsive nowrap">
+            <table id="datatable1" class="table mg-b-0">
               <thead>
                 <tr>
                   <th class="wd-15p">Kota</th>

@@ -11,14 +11,12 @@ class Pengelola_model extends CI_Model {
 
 	public function listing()
 	{
-		$query=$this->db->get('user');
+		$this->db->select('user.*,kota.*');
+		$this->db->from('user');
+		$this->db->join('kota','kota.id_kota = user.id_kota', 'left');
+		$this->db->order_by('id_user');
+		$query=$this->db->get();
 		return $query->result(); 
-	}
-
-	public function listing_admin()
-	{
-		$query=$this->db->query("select * from user where akses_level!=1");
-		return $query->result();
 	}
 
 	public function listing_pendaftar()
@@ -32,11 +30,11 @@ class Pengelola_model extends CI_Model {
 	{
 		$query=$this->db->get_where('user',array('id_user'=>$id_user));
 		return $query->row();
-    }
+  }
     
-    public function detail_profile($username)
+	public function detail_profile($username)
 	{
-		$query=$this->db->get_where('user',array('username'=>$username));
+		$query=$this->db->query("select user.*,kota.* from user,kota where (user.id_kota=kota.id_kota) && user.username='$username'");
 		return $query->row();
 	}
 
@@ -49,7 +47,7 @@ class Pengelola_model extends CI_Model {
 	//edit data
 	public function update($data)
 	{
-		$this->db->where('id_user', $data['id_user']);
+		$this->db->where('username', $data['username']);
 		$this->db->update('user', $data);
 	}
 

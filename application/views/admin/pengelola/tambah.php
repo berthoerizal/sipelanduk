@@ -16,8 +16,9 @@
                 <div class="form-group">
                     <label for="id_kota">Kota</label>
                     <select name="id_kota" id="id_kota" class="form-control">
-                        <option value="1">-- Pilih Kota --</option>
-                        <option value="2">Batam</option>
+                        <?php foreach($kota as $kota){ ?>
+                        <option value="<?php echo $kota->id_kota; ?>"><?php echo $kota->nama_kota; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <div class="form-group">
@@ -32,7 +33,7 @@
                     <label for="akses_level">Akses Level</label>
                     <select name="akses_level" id="akses_level" class="form-control">
                         <option value="21">Pengelola</option>
-                        <option value="2">Pengguna</option>
+                        <option value="10">Pengguna</option>
                     </select>
                 </div>
           </div>
