@@ -84,8 +84,10 @@ class Layanan extends CI_Controller {
         $id_kota=$this->session->userdata('id_kota');
         $layanan1 = $this->layanan_model->listing1();
         $layanan2 = $this->layanan_model->listing2();
-        $angka_layanan1=$this->angka_model->layanan1($id_kota);
-        $angka_layanan2=$this->angka_model->layanan2($id_kota);
+
+        $tanggal_hari_ini=date('y-m-d');
+        $angka_layanan1=$this->angka_model->layanan1($id_kota,$tanggal_hari_ini);
+        $angka_layanan2=$this->angka_model->layanan2($id_kota,$tanggal_hari_ini);
 
         $valid= $this->form_validation;
         $valid->set_rules('jumlah_angka', 'Jumlah Angka', 'required', array('required' => 'Jumlah Angka harus diisi'));
@@ -107,7 +109,6 @@ class Layanan extends CI_Controller {
                             'tanggal_angka'     => $tanggal_angka
                         ); 
             $id_layanan = $this->input->post('id_layanan');
-            $id_kota = $this->input->post('id_kota');
 
             $this->angka_model->add($id_layanan,$id_kota,$tanggal_angka,$data);
             $this->session->set_flashdata('sukses','Data berhasil dimasukkan');

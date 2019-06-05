@@ -8,19 +8,6 @@ class Angka_model extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
-
-	// public function listing()
-	// {
-	// 	$this->db->select('angka.*, layanan.*, kota.*');
-	// 	$this->db->from('angka');
-	// 	//relasi database
-	// 	$this->db->join('layanan', 'layanan.id_layanan = angka.id_layanan', 'left');
-	// 	$this->db->join('kota', 'kota.id_kota = angka.id_kota', 'left');
-	// 	//end relasi database
-	// 	$this->db->order_by('id_angka', 'desc');
-	// 	$query=$this->db->get();
-	// 	return $query->result();
-    // }
     
     public function listing()
 	{
@@ -28,17 +15,18 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
-	public function layanan1($id_kota)
+	public function layanan1($id_kota,$tanggal_hari_ini)
 	{
-		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='1') && (angka.id_kota='$id_kota')");
+		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='1') && (angka.id_kota='$id_kota') && (angka.tanggal_angka='$tanggal_hari_ini')");
 		return $query->result();
 	}
 
-	public function layanan2($id_kota)
+	public function layanan2($id_kota,$tanggal_hari_ini)
 	{
-		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='2') && (angka.id_kota='$id_kota')");
+		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='2') && (angka.id_kota='$id_kota') && (angka.tanggal_angka='$tanggal_hari_ini')");
 		return $query->result();
 	}
+
 
 		//show data detail
 	public function detail($id_angka)
@@ -46,12 +34,6 @@ class Angka_model extends CI_Model {
 		$query=$this->db->get_where('angka',array('id_angka'=>$id_angka));
 		return $query->row();
 	}
-
-	//tambah data
-	// public function add($data)
-	// {
-	// 	$this->db->insert('angka', $data);
-	// }
 
 	//edit data
 	public function update($data)
@@ -69,11 +51,11 @@ class Angka_model extends CI_Model {
 
 	public function add($id_layanan,$id_kota,$tanggal_angka,$data)
 	{
-		$query = $this->db->query("select * from angka where id_layanan='$id_layanan', id_kota='$id_kota', tanggal_angka='$tanggal_angka'");
+		$query = $this->db->query("select * from angka where (id_layanan='$id_layanan') && (id_kota='$id_kota') && (tanggal_angka='$tanggal_angka')");
 		if($query->num_rows() == 0){
 			$this->db->insert('angka', $data);
 		} else {
-		$this->db->where(array('id_layanan' => $id_layanan, 'id_kota' => $id_kota, 'tanggal_angka' => $tanggal));
+		$this->db->where(array('id_layanan' => $id_layanan, 'id_kota' => $id_kota, 'tanggal_angka' => $tanggal_angka));
 		$this->db->update('angka', $data);
 		}
 	}
