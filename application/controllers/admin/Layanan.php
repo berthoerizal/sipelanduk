@@ -80,10 +80,12 @@ class Layanan extends CI_Controller {
     
     public function input_data()
     {
+        $angka=$this->angka_model->listing();
         $id_kota=$this->session->userdata('id_kota');
-        $angka=$this->angka_model->listing($id_kota);
         $layanan1 = $this->layanan_model->listing1();
         $layanan2 = $this->layanan_model->listing2();
+        $angka_layanan1=$this->angka_model->layanan1($id_kota);
+        $angka_layanan2=$this->angka_model->layanan2($id_kota);
 
         $valid= $this->form_validation;
         $valid->set_rules('jumlah_angka', 'Jumlah Angka', 'required', array('required' => 'Jumlah Angka harus diisi'));
@@ -91,17 +93,23 @@ class Layanan extends CI_Controller {
         if($valid->run() === FALSE){
             $data = array('title' => 'Input Data Pelayanan',
             'isi' => 'admin/layanan/input_data',
-            'angka' => $angka,
             'layanan1' => $layanan1,
-            'layanan2' => $layanan2 );
+            'layanan2' => $layanan2,
+            'angka_layanan1' => $angka_layanan1,
+            'angka_layanan2' => $angka_layanan2 );
             $this->load->view('admin/layout/wrapper', $data, FALSE);
         } else {
-            $data = array(	'id_layanan'		=> $this->session->userdata('id_layanan'),
-                            'id_kota' 		    => $this->input->post('id_kota'),
-                            'jumlah_angka'		=> $this->input->post('jumlah_angka')
+            // id_layanan, tanggal_angka, id_kota = update id_angka ?
+            $tanggal_angka=date("y-m-d",strtotime($this->input->post('tanggal_angka')));
+            $data = array(	'id_layanan'		=> $this->input->post('id_layanan'),
+                            'id_kota' 		    => $id_kota,
+                            'jumlah_angka'		=> $this->input->post('jumlah_angka'),
+                            'tanggal_angka'     => $tanggal_angka
                         ); 
+            $id_layanan = $this->input->post('id_layanan');
+            $id_kota = $this->input->post('id_kota');
 
-            $this->angka_model->add($data);
+            $this->angka_model->add($id_layanan,$id_kota,$tanggal_angka,$data);
             $this->session->set_flashdata('sukses','Data berhasil dimasukkan');
             redirect(base_url('admin/layanan/input_data'));
         }

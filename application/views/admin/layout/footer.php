@@ -13,11 +13,34 @@
     <script src="<?php echo base_url(); ?>assets/admin/lib/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="<?php echo base_url(); ?>assets/admin/lib/select2/js/select2.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/admin/lib/select2/js/select2.full.min.js"></script>
+    
+    <script src="<?php echo base_url(); ?>assets/admin/lib/moment/js/moment.js"></script>
+    <script src="<?php echo base_url(); ?>assets/admin/lib/jquery-ui/js/jquery-ui.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/admin/js/slim.js"></script>
     <script>
       $(function(){
         'use strict';
+        $('.select2').select2({
+          minimumResultsForSearch: Infinity
+        });
+
+        // Select2 by showing the search
+        $('.select2-show-search').select2({
+          minimumResultsForSearch: ''
+        });
+
+        // Datepicker
+        $('.fc-datepicker').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true
+        });
+
+        $('#datepickerNoOfMonths').datepicker({
+          showOtherMonths: true,
+          selectOtherMonths: true,
+          numberOfMonths: 2
+        });
 
         $('#datatable1').DataTable({
           responsive: true,
@@ -36,15 +59,6 @@
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
-
-        $('.select2').select2({
-          minimumResultsForSearch: Infinity
-        });
-
-        // Select2 by showing the search
-        $('.select2-show-search').select2({
-          minimumResultsForSearch: ''
-        });
 
       });
     </script>

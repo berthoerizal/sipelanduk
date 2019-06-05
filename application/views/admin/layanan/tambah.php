@@ -9,9 +9,7 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <?php $attribut='class="form-horizontal"'; 
-            echo form_open(base_url('admin/layanan'),$attribut); 
-            ?>
+          <?php echo form_open(base_url('admin/layanan'));  ?>
           <div class="modal-body pd-25">
                 <div class="form-group">
                     <label for="nama_layanan">Nama Layanan</label>

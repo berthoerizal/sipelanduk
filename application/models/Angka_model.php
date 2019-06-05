@@ -22,10 +22,21 @@ class Angka_model extends CI_Model {
 	// 	return $query->result();
     // }
     
-    public function listing($data)
+    public function listing()
 	{
-        // $query=$this->db->query("select dokumen.*,user.nama,kategori_dokumen.* from dokumen,user,kategori_dokumen where (dokumen.username=user.username && dokumen.id_kategori_dokumen=kategori_dokumen.id_kategori_dokumen) && dokumen.username='$data' order by dokumen.id_dokumen desc");
-        $query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (angka.id_kota='$data')");
+        $query=$this->db->get('angka');
+		return $query->result();
+	}
+
+	public function layanan1($id_kota)
+	{
+		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='1') && (angka.id_kota='$id_kota')");
+		return $query->result();
+	}
+
+	public function layanan2($id_kota)
+	{
+		$query = $this->db->query("select angka.*, layanan.*, kota.* from angka,layanan,kota where (angka.id_layanan=layanan.id_layanan) && (angka.id_kota=kota.id_kota) && (layanan.kategori_layanan='2') && (angka.id_kota='$id_kota')");
 		return $query->result();
 	}
 
@@ -34,13 +45,13 @@ class Angka_model extends CI_Model {
 	{
 		$query=$this->db->get_where('angka',array('id_angka'=>$id_angka));
 		return $query->row();
-    }
+	}
 
 	//tambah data
-	public function add($data)
-	{
-		$this->db->insert('angka', $data);
-	}
+	// public function add($data)
+	// {
+	// 	$this->db->insert('angka', $data);
+	// }
 
 	//edit data
 	public function update($data)
@@ -55,6 +66,23 @@ class Angka_model extends CI_Model {
 		$this->db->where('id_angka', $data['id_angka']);
 		$this->db->delete('angka', $data);
 	}
+
+	public function add($id_layanan,$id_kota,$tanggal_angka,$data)
+	{
+		$query = $this->db->query("select * from angka where id_layanan='$id_layanan', id_kota='$id_kota', tanggal_angka='$tanggal_angka'");
+		if($query->num_rows() == 0){
+			$this->db->insert('angka', $data);
+		} else {
+		$this->db->where(array('id_layanan' => $id_layanan, 'id_kota' => $id_kota, 'tanggal_angka' => $tanggal));
+		$this->db->update('angka', $data);
+		}
+	}
+
+	// public function update($nim, $data){
+    // 	$this->db->where('nim', $nim);
+    // 	$query = $this->db->update('tb_user', $data);
+    // 	return TRUE;
+    // }
 
 }
 
