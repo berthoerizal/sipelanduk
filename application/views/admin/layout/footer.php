@@ -12,6 +12,7 @@
     <script src="<?php echo base_url(); ?>assets/admin/lib/datatables/js/jquery.dataTables.js"></script>
     <script src="<?php echo base_url(); ?>assets/admin/lib/datatables-responsive/js/dataTables.responsive.js"></script>
     <script src="<?php echo base_url(); ?>assets/admin/lib/select2/js/select2.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/admin/lib/select2/js/select2.full.min.js"></script>
 
     <script src="<?php echo base_url(); ?>assets/admin/js/slim.js"></script>
     <script>
@@ -35,6 +36,15 @@
 
         // Select2
         $('.dataTables_length select').select2({ minimumResultsForSearch: Infinity });
+
+        $('.select2').select2({
+          minimumResultsForSearch: Infinity
+        });
+
+        // Select2 by showing the search
+        $('.select2-show-search').select2({
+          minimumResultsForSearch: ''
+        });
 
       });
     </script>

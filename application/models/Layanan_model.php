@@ -15,6 +15,26 @@ class Layanan_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function listing1()
+	{
+		$this->db->select('layanan.*');
+		$this->db->from('layanan');
+		$this->db->where(array('kategori_layanan' => '1'));
+		$this->db->order_by('id_layanan', 'desc');
+		$query=$this->db->get();
+		return $query->result();
+	}
+
+	public function listing2()
+	{
+		$this->db->select('layanan.*');
+		$this->db->from('layanan');
+		$this->db->where(array('kategori_layanan' => '2'));
+		$this->db->order_by('id_layanan', 'desc');
+		$query=$this->db->get();
+		return $query->result();
+	}
+
 		//show data detail
 	public function detail($id_layanan)
 	{

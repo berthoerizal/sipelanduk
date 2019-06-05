@@ -24,10 +24,12 @@ class Simple_login {
 			//$id 	= $admin->id_user;
 			$nama	= $admin->nama;
 			$akses_level	= $admin->akses_level;
+			$id_kota = $admin->id_kota;
 			// $_SESSION['username'] = $username;
 			$this->CI->session->set_userdata('username', $username); 
 			$this->CI->session->set_userdata('akses_level', $akses_level); 
 			$this->CI->session->set_userdata('nama', $nama); 
+			$this->CI->session->set_userdata('id_kota', $id_kota); 
 			$this->CI->session->set_userdata('id_user', uniqid(rand()));
 			//$this->CI->session->set_userdata('id', $id);
 			// Kalau benar di redirect			
@@ -52,6 +54,7 @@ class Simple_login {
 		$this->CI->session->unset_userdata('username');
 		$this->CI->session->unset_userdata('akses_level');
 		$this->CI->session->unset_userdata('nama');
+		$this->CI->session->unset_userdata('id_kota');
 		$this->CI->session->unset_userdata('id_user');
 		//$this->CI->session->unset_userdata('id');
 		$this->CI->session->set_flashdata('sukses','Terimakasih, Anda berhasil logout');

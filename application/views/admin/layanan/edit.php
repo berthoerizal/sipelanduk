@@ -17,6 +17,13 @@
                     <label for="nama_layanan">Nama Layanan</label>
                     <input class="form-control" id="nama_layanan" name="nama_layanan" type="text" placehoder="Masukkan Nama Layanan" value="<?php echo $layanan->nama_layanan; ?>">
                 </div>
+                <div class="form-group">
+                  <label for="kategori_layanan">Kategori Layanan</label>
+                  <select name="kategori_layanan" id="kategori_layanan" class="form-control">
+                    <option value="1">Pendaftaran Penduduk</option>
+                    <option value="2" <?php if($layanan->kategori_layanan=="2") { echo "selected"; } ?>>Pencatatan Sipil</option>
+                  </select>
+                </div>
           </div>
           <div class="modal-footer">
             <button type="submit" name="submit" class="btn btn-primary">Simpan</button>

@@ -36,6 +36,7 @@
     <link href="<?php echo base_url(); ?>assets/admin/lib/Ionicons/css/ionicons.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/lib/datatables/css/jquery.dataTables.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/admin/lib/select2/css/select2.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/admin/lib/select2/css/select2.min.css" rel="stylesheet">
 
     <!-- Slim CSS -->
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/slim.css">

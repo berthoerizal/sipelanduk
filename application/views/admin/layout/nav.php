@@ -26,7 +26,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('admin/layanan/input'); ?>">
+            <a class="nav-link" href="<?php echo base_url('admin/layanan/input_data'); ?>">
               <i class="icon ion-ios-paper-outline"></i>
               <span>Input Data</span>
             </a>

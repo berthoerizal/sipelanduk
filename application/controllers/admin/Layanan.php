@@ -8,6 +8,8 @@ class Layanan extends CI_Controller {
  		parent::__construct();
          //Do your magic here
          $this->load->model('layanan_model');
+         $this->load->model('angka_model');
+         $this->load->model('pengelola_model');
          
  	}
 
@@ -74,6 +76,35 @@ class Layanan extends CI_Controller {
         $this->layanan_model->delete($data);
         $this->session->set_flashdata('sukses', 'layanan telah dihapus');
         redirect(base_url('admin/layanan'));
-	}
+    }
+    
+    public function input_data()
+    {
+        $id_kota=$this->session->userdata('id_kota');
+        $angka=$this->angka_model->listing($id_kota);
+        $layanan1 = $this->layanan_model->listing1();
+        $layanan2 = $this->layanan_model->listing2();
+
+        $valid= $this->form_validation;
+        $valid->set_rules('jumlah_angka', 'Jumlah Angka', 'required', array('required' => 'Jumlah Angka harus diisi'));
+
+        if($valid->run() === FALSE){
+            $data = array('title' => 'Input Data Pelayanan',
+            'isi' => 'admin/layanan/input_data',
+            'angka' => $angka,
+            'layanan1' => $layanan1,
+            'layanan2' => $layanan2 );
+            $this->load->view('admin/layout/wrapper', $data, FALSE);
+        } else {
+            $data = array(	'id_layanan'		=> $this->session->userdata('id_layanan'),
+                            'id_kota' 		    => $this->input->post('id_kota'),
+                            'jumlah_angka'		=> $this->input->post('jumlah_angka')
+                        ); 
+
+            $this->angka_model->add($data);
+            $this->session->set_flashdata('sukses','Data berhasil dimasukkan');
+            redirect(base_url('admin/layanan/input_data'));
+        }
+    }
     
 }
