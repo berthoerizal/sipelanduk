@@ -6,17 +6,13 @@ class Home extends CI_Controller {
  	public function __construct()
  	{
  		parent::__construct();
- 		//Do your magic here
+		 $this->load->model('layanan_model');
+		 $this->load->model('angka_model');
  	}
 
 	public function index()
 	{
-		$data = array('title' => 'Home', 'isi' => 'admin/home/list' );
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/list' );
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
-    }
-
-    public function detail($username)
-    {
-        # code...
     }
 }

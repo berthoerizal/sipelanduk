@@ -2,7 +2,7 @@
       <div class="container">
         <ul class="nav">
         <li class="nav-item">
-            <a class="nav-link" href="widgets.html">
+            <a class="nav-link" href="<?php echo base_url('admin/home'); ?>">
               <i class="icon ion-ios-home-outline"></i>
               <span>Home</span>
             </a>
