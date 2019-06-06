@@ -20,7 +20,7 @@
         //error validasi
         echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
         <p>Tanggal Terdaftar: <?php echo date("d M Y", strtotime($user->tanggal_daftar)); ?></p>
-        <?php echo form_open(base_url('admin/pengelola/detail/'.$user->username)); ?>
+        <?php echo form_open(base_url('admin/pengelola/detail/'.$this->encrypt->encode($user->username))); ?>
           <div class="form-layout form-layout-2">
             <div class="row no-gutters">
               <div class="col-md-3">
@@ -32,35 +32,34 @@
               <div class="col-md-3 mg-t--1 mg-md-t-0">
                 <div class="form-group mg-md-l--1">
                   <label class="form-control-label">Username: <span class="tx-danger"></span></label>
-                  <input class="form-control" type="text" name="username" value="<?php echo $user->username; ?>" placeholder="Masukkan Username" disabled>
+                  <p><?php echo $user->username; ?></p>
+                  <input class="form-control" type="hidden" name="username" value="<?php echo $user->username; ?>" disabled>
                 </div>
               </div><!-- col-4 -->
-              <div class="col-md-2 mg-t--1 mg-md-t-0">
-                <div class="form-group mg-md-l--1">
-                  <label class="form-control-label">Akses Level:<span class="tx-danger"></span></label>
-                  <select id="select2-a" class="form-control" name="akses_level">
-                  <option value="21">Pengelola</option>
-                  <option value="10" <?php if($user->akses_level=="10") { echo "selected"; } ?>>Pengguna</option>
-                  </select>
-                </div>
-              </div><!-- col-4 -->
-              <div class="col-md-4 mg-t--1 mg-md-t-0">
+              <div class="col-md-6 mg-t--1 mg-md-t-0">
                 <div class="form-group mg-md-l--1">
                   <label class="form-control-label">Email address: <span class="tx-danger"></span></label>
                   <input class="form-control" type="email" name="email" value="<?php echo $user->email; ?>" placeholder="Masukkan email">
                 </div>
               </div><!-- col-4 -->
-              <div class="col-md-8">
+              <div class="col-md-6">
                 <div class="form-group bd-t-0-force">
                 <label class="form-control-label mg-b-0-force">Kota / Kabupaten <span class="tx-danger">*</span></label>
-                  <select id="select2-a" class="form-control" name="id_kota" data-placeholder="Pilih Kota/Kabupaten">
-                  <?php foreach ($kota as $kota) { ?>
-                  <option value="<?php echo $kota->id_kota ?>" <?php if($user->id_kota==$kota->id_kota) { echo "selected"; } ?>> <?php echo $kota->nama_kota ?></option>
+                
+                  <?php if($this->session->userdata('akses_level')==10) { ?>
+                    <p><?php echo $user->nama_kota; ?></p>
+                    <input class="form-control" type="hidden" name="id_kota" value="<?php echo $user->id_kota; ?>">
+                  <?php } elseif($this->session->userdata('akses_level')==21) { ?>
+                    <select id="select2-a" class="form-control" name="id_kota" data-placeholder="Pilih Kota/Kabupaten">
+                    <?php foreach ($kota as $kota) { ?>
+                    <option value="<?php echo $kota->id_kota ?>" <?php if($user->id_kota==$kota->id_kota) { echo "selected"; } ?>> <?php echo $kota->nama_kota ?></option>
+                    <?php } ?>
+                    </select>
                   <?php } ?>
-                  </select>
+
                 </div>
               </div><!-- col-8 -->
-              <div class="col-md-4">
+              <div class="col-md-6">
                 <div class="form-group mg-md-l--1 bd-t-0-force">
                   <label class="form-control-label">Nomor Telepon/Hp: <span class="tx-danger"></span></label>
                   <input class="form-control" type="tel" name="nomor_telepon" value="<?php echo $user->nomor_telepon; ?>" placeholder="Masukkan Nomor Telepon/Hp">

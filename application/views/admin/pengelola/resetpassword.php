@@ -10,7 +10,7 @@
             </button>
           </div>
           <div class="modal-body pd-25">
-               <h4>Yakin ingin reset password <?php echo $user->username ?></h4>
+               <h4>Yakin ingin reset password <?php echo $user->username ?> ?</h4>
           </div>
           <div class="modal-footer">
             <a href="<?php echo base_url('admin/pengelola/resetpassword/'.$user->username); ?>" class="btn btn-primary" >Reset Password</a>

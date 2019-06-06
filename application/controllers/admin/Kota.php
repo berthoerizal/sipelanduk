@@ -7,7 +7,11 @@ class Kota extends CI_Controller {
  	{
  		parent::__construct();
          //Do your magic here
-         $this->load->model('kota_model');
+         if($this->session->userdata('akses_level')==21){
+            $this->load->model('kota_model');
+         } else {
+             redirect(base_url('error404'));
+         }
          
  	}
 

@@ -21,17 +21,19 @@
           <div class="table-responsive">
             <?php include('tambah.php'); ?>
             <br><br>
-            <table id="datatable1" class="table mg-b-0">
+            <table id="datatable1" class="table mg-b-0 table-bordered">
               <thead>
                 <tr>
-                  <th class="wd-15p">Layanan</th>
-                  <th class="wd-10p">Kategori Layanan</th>
-                  <th class="wd-5p">Aksi</th>
+                  <th class="wd-5p">No.</th>
+                  <th class="wd-25p">Layanan</th>
+                  <th>Kategori Layanan</th>
+                  <th class="wd-30p">Aksi</th>
                 </tr>
               </thead>
               <tbody>
-              <?php foreach($layanan as $layanan) { ?>
+              <?php $x=0; foreach($layanan as $layanan) { ?>
                 <tr>
+                  <td><?php $x=$x+1; echo $x; ?></td>
                   <td><?php echo $layanan->nama_layanan; ?></td>
                   <td><?php if($layanan->kategori_layanan==1) { echo "Pendaftaran Penduduk"; } else { echo "Pencatatan Sipil"; } ?></td>
                   <td>

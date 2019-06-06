@@ -50,40 +50,43 @@ class Pengelola extends CI_Controller {
 
      public function detail($username)
      {
-        $user=$this->pengelola_model->detail_profile($username);
-        $kota=$this->kota_model->listing();
-        $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama harus diisi'));
- 
-         if($this->form_validation->run() === FALSE){
- 
-             $data = array(
-                 'title' 	=> 'Profile', 
-                 'isi' 		=> 'admin/pengelola/detail',
-                 'user'	=> $user,
-                'kota' => $kota);
-             $this->load->view('admin/layout/wrapper', $data);
- 
-         } else {
-            $data = array(	'username'=> $username,
-                            'nama'    => $this->input->post('nama'), 
-                            'id_kota' => $this->input->post('id_kota'),
-                            'email'   => $this->input->post('email'),
-                            'nomor_telepon' => $this->input->post('nomor_telepon'),
-                            'akses_level' => $this->input->post('akses_level')
-                            );  
- 
-             $this->pengelola_model->update($data);
-             $this->session->set_flashdata('sukses','Pengelola telah diedit');
-             redirect(base_url('admin/pengelola/detail/'.$user->username));
-         }
+        $username=$this->encrypt->decode($username);
+        if($this->session->userdata('username')==$username){
+            $user=$this->pengelola_model->detail_profile($username);
+            $kota=$this->kota_model->listing();
+            $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama harus diisi'));
+    
+            if($this->form_validation->run() === FALSE){
+    
+                $data = array(
+                    'title' 	=> 'Profile', 
+                    'isi' 		=> 'admin/pengelola/detail',
+                    'user'	=> $user,
+                    'kota' => $kota);
+                $this->load->view('admin/layout/wrapper', $data);
+    
+            } else {
+                $data = array(	'username'=> $username,
+                                'nama'    => $this->input->post('nama'), 
+                                'id_kota' => $this->input->post('id_kota'),
+                                'email'   => $this->input->post('email'),
+                                'nomor_telepon' => $this->input->post('nomor_telepon')
+                                );  
+    
+                $this->pengelola_model->update($data);
+                $this->session->set_flashdata('sukses','Pengelola telah diedit');
+                redirect(base_url('admin/pengelola/detail/'.$this->encrypt->encode($user->username)));
+            }
 
-         $data = array(
-            'title' 	=> 'Profile', 
-            'isi' 		=> 'admin/pengelola/detail',
-            'user'	=> $user,
-           'kota' => $kota);
-        $this->load->view('admin/layout/wrapper', $data);
-        
+            $data = array(
+                'title' 	=> 'Profile', 
+                'isi' 		=> 'admin/pengelola/detail',
+                'user'	=> $user,
+            'kota' => $kota);
+            $this->load->view('admin/layout/wrapper', $data);
+        } else  {
+            redirect(base_url('admin/pengelola/detail/'.$this->encrypt->encode($this->session->userdata('username'))));
+        }
      }
 
      public function hapus($id_user)
