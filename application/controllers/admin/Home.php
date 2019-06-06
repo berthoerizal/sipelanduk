@@ -42,7 +42,7 @@ class Home extends CI_Controller {
 		
 		$data = array ('title' => $detail_pelayanan->nama_layanan, 
 										'isi' => 'admin/home/detail_pelayanan', 
-										
+										'detail_pelayanan' => $detail_pelayanan, 
 										'pelayanan_hari_ini' => $pelayanan_hari_ini,
 										'pelayanan_bulan_ini' => $pelayanan_bulan_ini,
 										'pelayanan_tahun_ini' => $pelayanan_tahun_ini,
