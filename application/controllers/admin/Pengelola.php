@@ -13,6 +13,7 @@ class Pengelola extends CI_Controller {
 
      public function index()
      {
+         if($this->session->userdata('akses_level')==21){
          $user=$this->pengelola_model->listing();
          $kota=$this->kota_model->listing();
          $valid= $this->form_validation;
@@ -45,6 +46,8 @@ class Pengelola extends CI_Controller {
              $this->pengelola_model->add($data);
              $this->session->set_flashdata('sukses','Pengelola telah ditambah');
              redirect(base_url('admin/pengelola'));
+         }} else {
+            redirect(base_url('error404'));
          }
      }
 

@@ -15,6 +15,7 @@ class Layanan extends CI_Controller {
 
      public function index()
      {
+         if($this->session->userdata('akses_level')==21){
          $layanan=$this->layanan_model->listing();
          $valid= $this->form_validation;
          $valid->set_rules('nama_layanan', 'Nama Layanan', 'required|is_unique[layanan.nama_layanan]', array(
@@ -39,6 +40,8 @@ class Layanan extends CI_Controller {
              $this->layanan_model->add($data);
              $this->session->set_flashdata('sukses','Layanan telah ditambah');
              redirect(base_url('admin/layanan'));
+         }} else { 
+             redirect(base_url('error404'));
          }
      }
 
@@ -80,6 +83,7 @@ class Layanan extends CI_Controller {
     
     public function input_data()
     {
+        if($this->session->userdata('akses_level')==10){
         $angka=$this->angka_model->listing();
         $id_kota=$this->session->userdata('id_kota');
         $layanan1 = $this->layanan_model->listing1();
@@ -113,7 +117,8 @@ class Layanan extends CI_Controller {
             $this->angka_model->add($id_layanan,$id_kota,$tanggal_angka,$data);
             $this->session->set_flashdata('sukses','Data berhasil dimasukkan');
             redirect(base_url('admin/layanan/input_data'));
+        }} else {
+            redirect(base_url('error404'));
         }
     }
-    
 }

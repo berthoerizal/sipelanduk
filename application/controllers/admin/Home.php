@@ -5,9 +5,13 @@ class Home extends CI_Controller {
 
  	public function __construct()
  	{
- 		parent::__construct();
+		 parent::__construct();
+		 if($this->session->userdata('akses_level')==21 || $this->session->userdata('akses_level')==10){
 		 $this->load->model('layanan_model');
 		 $this->load->model('angka_model');
+		 } else {
+			redirect(base_url('error404'));
+		 }
  	}
 
 	public function index()
