@@ -17,7 +17,7 @@ class Angka_model extends CI_Model {
 
 	public function detail_pelayanan($id_layanan)
 	{
-		$query=$this->db->query("select angka.*,layanan.nama_layanan as nama_layanan from angka,layanan where (angka.id_layanan=layanan.id_layanan) && angka.id_layanan='$id_layanan'");
+		$query=$this->db->query("select nama_layanan from layanan where id_layanan='$id_layanan'");
 		return $query->row();
 	}
 

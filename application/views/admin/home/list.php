@@ -1,3 +1,5 @@
+<?php 
+$site_config=$this->konfigurasi_model->listing(); ?> 
 <div class="slim-mainpanel">
       <div class="container">
         <div class="slim-pageheader">
@@ -17,7 +19,7 @@
           ?>
             <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b></li>
           </ol>
-          <h6 class="slim-pagetitle"><?php echo $title; ?></h6>
+          <h6 class="slim-pagetitle"><?php echo $site_config->alamat; ?></h6>
         </div><!-- slim-pageheader -->
 
         <div class="section-wrapper">

@@ -61,16 +61,16 @@
               </div>
               <div class="col-md-6">
                   <div class="form-group">
+                      <label for="deskripsi">Deskripsi Website</label>
+                      <input type="text" name="deskripsi" class="form-control" id="deskripsi" placeholder="Masukkan Deskripsi Website" value="<?php echo $konfigurasi->deskripsi; ?>">
+                  </div>
+                  <div class="form-group">
                       <label for="keywords">Keywords Website</label>
                       <input type="text" name="keywords" class="form-control" id="keywords" placeholder="Masukkan Keywords Website" value="<?php echo $konfigurasi->keywords; ?>">
                   </div>
                   <div class="form-group">
                       <label for="metatext">Metatext Website</label>
                       <input type="text" name="metatext" class="form-control" id="metatext" placeholder="Masukkan Metatext Website" value="<?php echo $konfigurasi->metatext; ?>">
-                  </div>
-                  <div class="form-group">
-                      <label for="tagline">Tagline Website</label>
-                      <input type="text" name="tagline" class="form-control" id="tagline" placeholder="Masukkan Tagline Website" value="<?php echo $konfigurasi->tagline; ?>">
                   </div>
                   <div class="form-group">
                       <label for="logo">Logo Website</label>

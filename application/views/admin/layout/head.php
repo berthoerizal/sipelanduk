@@ -1,4 +1,5 @@
-
+<?php 
+$site_config=$this->konfigurasi_model->listing(); ?> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Twitter -->
-    <meta name="twitter:site" content="@themepixels">
+    <meta name="twitter:site" content="@themepixels"> 
     <meta name="twitter:creator" content="@themepixels">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Slim">
@@ -29,7 +30,10 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>SIPELANDUK</title>
+    <title><?php echo $site_config->namaweb; ?></title>
+    <meta name="title" content ="<?php echo $site_config->metatext ?>">
+    <meta name="description" content="<?php echo $site_config->deskripsi ?>">
+    <meta name="keywords" content="<?php echo $site_config->keywords ?>">
 
     <!-- vendor css -->
     <link href="<?php echo base_url(); ?>assets/admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet">

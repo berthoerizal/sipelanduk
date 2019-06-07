@@ -10,7 +10,7 @@
             </button>
           </div>
           <div class="modal-body pd-25">
-               <h4>Yakin ingin menghapus <?php echo $kota->nama_kota ?></h4>
+               <h4>Yakin ingin menghapus <?php echo $kota->nama_kota ?> ?</h4>
           </div>
           <div class="modal-footer">
             <a href="<?php echo base_url('admin/kota/hapus/'.$kota->id_kota); ?>" class="btn btn-primary" >Hapus</a>

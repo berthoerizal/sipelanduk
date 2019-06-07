@@ -59,7 +59,7 @@ class Konfigurasi extends CI_Controller {
 				$data = array(	'id_konfigurasi'	=> $konfigurasi->id_konfigurasi,
 								'logo'				=> $upload_data['uploads']['file_name'],
 								'namaweb'			=> $i->post('namaweb'),
-								'tagline'			=> $i->post('tagline'),
+								'deskripsi'			=> $i->post('deskripsi'),
 								'website'			=> $i->post('website'),
 								'keywords'			=> $i->post('keywords'),
 								'metatext' 			=> $i->post('metatext'),

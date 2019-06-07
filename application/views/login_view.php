@@ -1,4 +1,5 @@
-
+<?php 
+$site_config=$this->konfigurasi_model->listing(); ?> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +30,10 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Slim Responsive Bootstrap 4 Admin Template</title>
+    <title><?php echo $site_config->namaweb; ?></title>
+    <meta name="title" content ="<?php echo $site_config->metatext ?>">
+    <meta name="description" content="<?php echo $site_config->deskripsi ?>">
+    <meta name="keywords" content="<?php echo $site_config->keywords ?>">
 
     <!-- Vendor css -->
     <link href="<?php echo base_url(); ?>assets/admin/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
@@ -44,8 +48,8 @@
     <div class="signin-wrapper">
 
       <div class="signin-box">
-        <h2 class="slim-logo"><a href="index.html">sipelanduk</a></h2>
-        <h2 class="signin-title-primary">Selamat Datang</h2>
+        <h2 class="slim-logo"><a href="index.html"><?php echo $site_config->namaweb; ?></a></h2>
+        <h2 class="signin-title-primary"><?php echo $site_config->deskripsi; ?></h2>
         <h3 class="signin-title-secondary">Silahkan Login</h3>
         <?php echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
 
