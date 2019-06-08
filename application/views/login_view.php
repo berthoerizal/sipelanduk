@@ -48,9 +48,9 @@ $site_config=$this->konfigurasi_model->listing(); ?>
     <div class="signin-wrapper">
 
       <div class="signin-box">
-        <h2 class="slim-logo"><a href="<?php echo base_url(); ?>"><?php echo $site_config->namaweb; ?></a></h2>
-        <h2 class="signin-title-primary"><?php echo $site_config->deskripsi; ?></h2>
-        <h3 class="signin-title-secondary">Silahkan Login</h3>
+        <a href="<?php echo base_url(); ?>"><img style="width: 100px;" src="<?php echo base_url('assets/upload/image/'.$site_config->logo); ?>" alt="Logo Website"></a><br><br>
+        <h2 class="signin-title-primary" style="color: #1B84E7; font-weight: bold; text-shadow: 1px 1px 10px rgba(0,0,0,0.3);"><?php echo $site_config->namaweb; ?></h2>
+        <h3 class="signin-title-secondary"><?php echo $site_config->deskripsi; ?></h3>
         <?php echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
 
 <?php 
