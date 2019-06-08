@@ -18,7 +18,6 @@
       //error validasi
       echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
       <div class="table-responsive">
-        <?php include('tambah.php'); ?>
         <br><br>
         <table id="datatable1" class="table mg-b-0 table-bordered">
           <thead>
@@ -26,7 +25,6 @@
               <th class="wd-5p">No.</th>
               <th class="wd-25p">Layanan</th>
               <th>Kategori Layanan</th>
-              <th class="wd-30p">Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -35,10 +33,6 @@
               <td><?php $x=$x+1; echo $x; ?></td>
               <td><?php echo $layanan->nama_layanan; ?></td>
               <td><?php if($layanan->kategori_layanan==1) { echo "Pendaftaran Penduduk"; } else { echo "Pencatatan Sipil"; } ?></td>
-              <td>
-              <?php include('edit.php'); ?>
-              <?php include('hapus.php'); ?>
-              </td>
             </tr>
             <?php } ?>
           </tbody>

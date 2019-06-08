@@ -19,14 +19,12 @@
             //error validasi
             echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
           <div class="table-responsive">
-            <?php include('tambah.php'); ?>
             <br><br>
             <table id="datatable1" class="table mg-b-0 table-bordered">
               <thead>
                 <tr>
                   <th class="wd-5p">No.</th>
                   <th class="wd-30p">Kota</th>
-                  <th class="wd-10p">Aksi</th>
                 </tr>
               </thead>
               <tbody>
@@ -34,10 +32,6 @@
                 <tr>
                   <td><?php $x=$x+1; echo $x; ?></td>
                   <td><?php echo $kota->nama_kota; ?></td>
-                  <td>
-                  <?php include('edit.php'); ?>
-                  <?php include('hapus.php'); ?>
-                  </td>
                 </tr>
                 <?php } ?>
               </tbody>

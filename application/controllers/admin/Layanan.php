@@ -44,42 +44,6 @@ class Layanan extends CI_Controller {
              redirect(base_url('error404'));
          }
      }
-
-     public function edit($id_layanan)
-     {
-         $layanan=$this->layanan_model->listing($id_layanan);
-         $this->form_validation->set_rules('nama_layanan', 'Nama Layanan', 'required', array('required' => 'Nama Layanan harus diisi'));
- 
-         if($this->form_validation->run() === FALSE){
- 
-             $data = array(
-                 'title' 	=> 'Layanan', 
-                 'isi' 		=> 'admin/layanan/list',
-                 'layanan'	=> $layanan);
-             $this->load->view('admin/layout/wrapper', $data);
- 
-         } else {
-            $slug_layanan = url_title($this->input->post('nama_layanan'), 'dash', TRUE);
-            $data = array(	'id_layanan' => $id_layanan,
-                            'nama_layanan' => $this->input->post('nama_layanan'), 
-                            'kategori_layanan' => $this->input->post('kategori_layanan'),
-                            'slug_layanan' => $slug_layanan
-                            );  
- 
-             $this->layanan_model->update($data);
-             $this->session->set_flashdata('sukses','Layanan telah diedit');
-             redirect(base_url('admin/layanan'));
-         }
-     }
-
-    public function hapus($id_layanan)
-	{
-		$layanan=$this->layanan_model->detail($id_layanan);
-        $data = array('id_layanan' => $layanan->id_layanan );
-        $this->layanan_model->delete($data);
-        $this->session->set_flashdata('sukses', 'layanan telah dihapus');
-        redirect(base_url('admin/layanan'));
-    }
     
     public function input_data()
     {

@@ -20,27 +20,7 @@ class Kota_model extends CI_Model {
 	{
 		$query=$this->db->get_where('kota',array('id_kota'=>$id_kota));
 		return $query->row();
-    }
-
-	//tambah data
-	public function add($data)
-	{
-		$this->db->insert('kota', $data);
-	}
-
-	//edit data
-	public function update($data)
-	{
-		$this->db->where('id_kota', $data['id_kota']);
-		$this->db->update('kota', $data);
-	}
-
-	//delete data
-	public function delete($data)
-	{
-		$this->db->where('id_kota', $data['id_kota']);
-		$this->db->delete('kota', $data);
-	}
+  }
 
 }
 
