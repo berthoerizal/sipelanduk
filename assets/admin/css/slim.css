@@ -12077,10 +12077,9 @@ textarea.parsley-success:focus {
   margin-left: 15px; }
   .logged-user img {
     width: 45px;
-    height: 45px;
+    height: 50px;
     padding: 3px;
-    border: 1px solid #1b84e7;
-    border-radius: 100%; }
+   }
   .logged-user span {
     margin-left: 10px;
     margin-right: 5px;

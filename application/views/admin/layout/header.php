@@ -4,7 +4,7 @@ $site_config=$this->konfigurasi_model->listing(); ?>
   <div class="slim-header">
     <div class="container">
       <div class="slim-header-left">
-        <h2 class="slim-logo" style="letter-spacing: 1px;"><a href="index.html"><?php echo $site_config->namaweb; ?><span style="font-size: 15px; color: #333; margin-left: 10px;"><?php echo $site_config->deskripsi; ?></span></a></h2>
+        <h2 class="slim-logo" style="letter-spacing: 1px;"><a href="<?php echo base_url('admin/home'); ?>"><?php echo $site_config->namaweb; ?><span style="font-size: 15px; color: #333; margin-left: 10px;"><?php echo $site_config->deskripsi; ?></span></a></h2>
       </div><!-- slim-header-left -->
       <div class="slim-header-right">
         <div class="dropdown dropdown-c">
