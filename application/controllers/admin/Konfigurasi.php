@@ -6,7 +6,7 @@ class Konfigurasi extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if($this->session->userdata('akses_level')==21){
+		if($this->session->userdata('akses_level')==21 || $this->session->userdata('username')=='masterdata'){
 			$this->load->model('konfigurasi_model');
 		} else {
 			redirect(base_url('error404'));

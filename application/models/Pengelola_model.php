@@ -11,11 +11,12 @@ class Pengelola_model extends CI_Model {
 
 	public function listing()
 	{
-		$this->db->select('user.*,kota.*');
-		$this->db->from('user');
-		$this->db->join('kota','kota.id_kota = user.id_kota', 'left');
-		$this->db->order_by('id_user');
-		$query=$this->db->get();
+		// $this->db->select('user.*,kota.*');
+		// $this->db->from('user');
+		// $this->db->join('kota','kota.id_kota = user.id_kota', 'left');
+		// $this->db->order_by('id_user');
+		// $query=$this->db->get();
+		$query=$this->db->query("select user.*,kota.* from user left join kota on user.id_kota=kota.id_kota where user.username!='masterdata'");
 		return $query->result(); 
 	}
 

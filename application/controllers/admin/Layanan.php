@@ -15,7 +15,7 @@ class Layanan extends CI_Controller {
 
      public function index()
      {
-         if($this->session->userdata('akses_level')==21){
+         if($this->session->userdata('akses_level')==21 || $this->session->userdata('username')=='masterdata'){
          $layanan=$this->layanan_model->listing();
          $valid= $this->form_validation;
          $valid->set_rules('nama_layanan', 'Nama Layanan', 'required|is_unique[layanan.nama_layanan]', array(

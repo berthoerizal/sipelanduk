@@ -13,7 +13,7 @@ class Pengelola extends CI_Controller {
 
      public function index()
      {
-         if($this->session->userdata('akses_level')==21){
+         if($this->session->userdata('akses_level')==21 || $this->session->userdata('username')=='masterdata'){
          $user=$this->pengelola_model->listing();
          $kota=$this->kota_model->listing();
          $valid= $this->form_validation;
@@ -54,7 +54,7 @@ class Pengelola extends CI_Controller {
      public function detail($username)
      {
         $username=$this->encrypt->decode($username);
-        if($this->session->userdata('username')==$username || $this->session->userdata('akses_level')==21){
+        if($this->session->userdata('username')==$username || ($this->session->userdata('akses_level')==21 || $this->session->userdata('username')=='masterdata')){
             $user=$this->pengelola_model->detail_profile($username);
             $kota=$this->kota_model->listing();
             $this->form_validation->set_rules('nama', 'Nama', 'required', array('required' => 'Nama harus diisi'));
