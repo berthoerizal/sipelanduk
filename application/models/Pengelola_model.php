@@ -35,7 +35,12 @@ class Pengelola_model extends CI_Model {
     
 	public function detail_profile($username)
 	{
-		$query=$this->db->query("select user.*,kota.* from user,kota where (user.id_kota=kota.id_kota) && user.username='$username'");
+		$this->db->select('user.*,kota.*');
+		$this->db->from('user');
+		$this->db->join('kota','kota.id_kota = user.id_kota', 'left');
+		$this->db->where('username', $username);
+		$this->db->order_by('id_user');
+		$query=$this->db->get();
 		return $query->row();
 	}
 
