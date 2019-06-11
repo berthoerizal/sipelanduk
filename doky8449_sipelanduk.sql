@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 08, 2019 at 12:15 PM
--- Server version: 10.1.8-MariaDB
--- PHP Version: 5.6.14
+-- Host: localhost:3306
+-- Generation Time: Jun 11, 2019 at 06:56 PM
+-- Server version: 10.2.23-MariaDB-cll-lve
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_sipelanduk`
+-- Database: `doky8449_sipelanduk`
 --
 
 -- --------------------------------------------------------
@@ -49,7 +51,9 @@ INSERT INTO `angka` (`id_angka`, `id_kota`, `id_layanan`, `jumlah_angka`, `tangg
 (17, 3, 7, 10, '2019-06-06'),
 (18, 3, 9, 50, '2019-06-06'),
 (19, 2, 3, 100, '2019-06-06'),
-(20, 2, 3, 50, '2019-06-07');
+(20, 2, 3, 50, '2019-06-07'),
+(21, 3, 9, 20, '2019-06-09'),
+(22, 3, 11, 50, '2019-06-14');
 
 -- --------------------------------------------------------
 
@@ -68,7 +72,7 @@ CREATE TABLE `konfigurasi` (
   `deskripsi` text NOT NULL,
   `alamat` text NOT NULL,
   `metatext` text NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -159,7 +163,7 @@ CREATE TABLE `user` (
   `id_kota` int(11) NOT NULL,
   `nomor_telepon` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `tanggal_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `tanggal_daftar` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -170,7 +174,8 @@ INSERT INTO `user` (`id_user`, `nama`, `username`, `password`, `akses_level`, `i
 (5, 'Pekanbaru', 'erizal', '2b8104c2b304b6b2a42013a44ed21a2a25d4038b', 21, 3, '', '', '2019-06-04 06:03:38'),
 (11, 'devwell', 'masterdata', '3adee998f01627aaa1433d67969f0d69a9b2ac95', 21, 4, '081266096662', 'berthoerizal21@gmail.com', '2019-06-08 09:07:30'),
 (12, 'sipelanduk', 'sipelanduk', '3adee998f01627aaa1433d67969f0d69a9b2ac95', 21, 3, NULL, NULL, '2019-06-08 10:05:36'),
-(13, 'tanjungpinang', 'tanjungpinang', '3adee998f01627aaa1433d67969f0d69a9b2ac95', 10, 3, NULL, NULL, '2019-06-08 10:07:21');
+(13, 'tanjungpinang', 'tanjungpinang', '3adee998f01627aaa1433d67969f0d69a9b2ac95', 10, 6, '', '', '2019-06-08 10:07:21'),
+(14, 'edo lorenza', 'edo lorenza', '6e77b6137655c2a444173c05c5e76b6d96e5bd4d', 21, 1, NULL, NULL, '2019-06-10 13:13:17');
 
 --
 -- Indexes for dumped tables
@@ -214,27 +219,33 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `angka`
 --
 ALTER TABLE `angka`
-  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
   MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
   MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
