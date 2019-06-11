@@ -15,22 +15,80 @@
             default: $hari_ini="Tidak diketahui"; break;
           }
           ?>
-            <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b></li>
+             <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b> Last Updated at <?php
+            foreach($last_update as $last_update){ echo date("H:i:s",strtotime($last_update->tanggal_update)); }?></li>
           </ol>
             <h6 class="slim-pagetitle"><?php echo $title; ?></h6>
         </div><!-- slim-pageheader -->
 
         <div class="section-wrapper">
-            <?php 
-            if($this->session->flashdata('sukses'))
-            {
-            echo '<div class="alert alert-success">';
-            echo $this->session->flashdata('sukses');
-            echo '</div>';
-            }
-            //error validasi
-            echo validation_errors('<div class="alert alert-warning">','</div>'); ?>
-            
+            <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+                <div class="card card-status">
+                    <div class="media">
+                    <div class="media-body">
+                        <span>
+                        <h1 class="pull-right"><?php if($count_hari_ini->jumlah_angka==NULL){
+                        echo "0";
+                        } else {
+                        echo $count_hari_ini->jumlah_angka;
+                        } ?></h1><br><br>
+                        <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right"><?php 
+                        echo $hari_ini; ?>, <?php echo date('d M Y'); ?></p></span>
+                    </div><!-- media-body -->
+                    </div><!-- media -->
+                </div><!-- card -->
+                </div><!-- col-3 -->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+                <div class="card card-status">
+                    <div class="media">
+                    <div class="media-body">
+                        <span>
+                        <h1 class="pull-right"><?php if($count_bulan_ini->jumlah_angka==NULL){
+                        echo "0";
+                        } else {
+                        echo $count_bulan_ini->jumlah_angka;
+                        } ?></h1><br><br>
+                        <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right"><?php echo date('M Y'); ?></p></span>
+                    </div><!-- media-body -->
+                    </div><!-- media -->
+                </div><!-- card -->
+                </div><!-- col-3 -->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+                <div class="card card-status">
+                    <div class="media">
+                    <div class="media-body">
+                        <span>
+                        <h1 class="pull-right"><?php if($count_tahun_ini->jumlah_angka==NULL){
+                        echo "0";
+                        } else {
+                        echo $count_tahun_ini->jumlah_angka;
+                        } ?></h1><br><br>
+                        <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right"><?php echo date('Y'); ?></p></span>
+                    </div><!-- media-body -->
+                    </div><!-- media -->
+                </div><!-- card -->
+                </div><!-- col-3 -->
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+                <div class="card card-status">
+                    <div class="media">
+                    <div class="media-body">
+                        <span>
+                        <h1 class="pull-right"><?php if($count_keseluruhan->jumlah_angka==NULL){
+                        echo "0";
+                        } else {
+                        echo $count_keseluruhan->jumlah_angka;
+                        } ?></h1><br><br>
+                        <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right">Keseluruhan Hingga Tahun <?php echo date('Y'); ?></p></span>
+                    </div><!-- media-body -->
+                    </div><!-- media -->
+                </div><!-- card -->
+                </div><!-- col-3 -->
+                </div>
+            </div>
+            </div>            
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
                     <h4>Hari Ini</h4>

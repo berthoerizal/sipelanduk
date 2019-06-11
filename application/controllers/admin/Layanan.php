@@ -48,6 +48,7 @@ class Layanan extends CI_Controller {
     public function input_data()
     {
         if($this->session->userdata('akses_level')==10){
+        $last_update=$this->angka_model->last_update();
         $angka=$this->angka_model->listing();
         $id_kota=$this->session->userdata('id_kota');
         $layanan1 = $this->layanan_model->listing1();
@@ -66,7 +67,8 @@ class Layanan extends CI_Controller {
             'layanan1' => $layanan1,
             'layanan2' => $layanan2,
             'angka_layanan1' => $angka_layanan1,
-            'angka_layanan2' => $angka_layanan2 );
+            'angka_layanan2' => $angka_layanan2,
+            'last_update' => $last_update );
             $this->load->view('admin/layout/wrapper', $data, FALSE);
         } else {
             // id_layanan, tanggal_angka, id_kota = update id_angka ?

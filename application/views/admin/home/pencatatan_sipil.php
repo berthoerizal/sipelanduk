@@ -15,7 +15,8 @@
             default: $hari_ini="Tidak diketahui"; break;
           }
           ?>
-            <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b></li>
+            <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b> Last Updated at <?php
+            foreach($last_update as $last_update){ echo date("H:i:s",strtotime($last_update->tanggal_update)); }?></li>
           </ol>
           <h6 class="slim-pagetitle"><?php echo $title; ?></h6>
         </div><!-- slim-pageheader -->
