@@ -1795,7 +1795,7 @@ textarea.custom-file-input.parsley-error:focus ~ .custom-file-label {
   vertical-align: middle;
   user-select: none;
   border: 1px solid transparent;
-  padding: 0.594rem 0.75rem;
+  padding: 0.15rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 3px;
