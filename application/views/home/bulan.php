@@ -35,10 +35,10 @@ $site_config=$this->konfigurasi_model->listing(); ?>
                 </a>
                 <hr>
                 <span class="pull-right">
-                 <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                 <a href="<?php echo base_url(); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Hari</div>
                 </a>
-                <a href="<?php echo base_url('home/bulan'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home/bulan'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Bulan</div>
                 </a>
                 <a href="<?php echo base_url('home/tahun'); ?>" class="btn btn-outline-light">

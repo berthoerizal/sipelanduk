@@ -6,12 +6,8 @@ class Home extends CI_Controller {
  	public function __construct()
  	{
 		 parent::__construct();
-		 if($this->session->userdata('akses_level')==21 || $this->session->userdata('akses_level')==10){
 		 $this->load->model('layanan_model');
 		 $this->load->model('angka_model');
-		 } else {
-			redirect(base_url('error404'));
-		 }
  	}
 
 	public function index()
@@ -21,7 +17,37 @@ class Home extends CI_Controller {
 		$pelayanan=$this->angka_model->listing_hari_ini_1($tanggal_hari_ini);
 		$pelayanan_all=$this->layanan_model->listing1();
 
-		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/list', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENDAFTARAN PENDUDUK - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU HARI INI', 'last_update' => $last_update);
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/list', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENDAFTARAN PENDUDUK - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function bulan()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_bulan_ini_1();
+		$pelayanan_all=$this->layanan_model->listing1();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/bulan', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENDAFTARAN PENDUDUK - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function tahun()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_tahun_ini_1();
+		$pelayanan_all=$this->layanan_model->listing1();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/tahun', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENDAFTARAN PENDUDUK - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function keseluruhan()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_keseluruhan_1();
+		$pelayanan_all=$this->layanan_model->listing1();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/keseluruhan', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENDAFTARAN PENDUDUK - TOTAL PELAYANAN PROVINSI KEPULAUAN', 'last_update' => $last_update);
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	}
 	
@@ -32,7 +58,37 @@ class Home extends CI_Controller {
 		$pelayanan=$this->angka_model->listing_hari_ini_2($tanggal_hari_ini);
 		$pelayanan_all=$this->layanan_model->listing2();
 
-		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/pencatatan_sipil', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENCATATAN SIPIL - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU HARI INI', 'last_update' => $last_update);
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/pencatatan_sipil', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENCATATAN SIPIL - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function pencatatan_sipil_bulan()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_bulan_ini_2();
+		$pelayanan_all=$this->layanan_model->listing2();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/pencatatan_sipil_bulan', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENCATATAN SIPIL - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function pencatatan_sipil_tahun()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_tahun_ini_2();
+		$pelayanan_all=$this->layanan_model->listing2();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/pencatatan_sipil_tahun', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENCATATAN SIPIL - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
+		$this->load->view('admin/layout/wrapper', $data, FALSE);
+	}
+
+	public function pencatatan_sipil_keseluruhan()
+	{
+		$last_update=$this->angka_model->last_update();
+		$pelayanan=$this->angka_model->listing_keseluruhan_2();
+		$pelayanan_all=$this->layanan_model->listing2();
+
+		$data = array('title' => 'Provinsi Kepulauan Riau', 'isi' => 'admin/home/pencatatan_sipil_keseluruhan', 'pelayanan' => $pelayanan, 'pelayanan_all' => $pelayanan_all, 'sub_pelayanan' => 'PENCATATAN SIPIL - TOTAL PELAYANAN PROVINSI KEPULAUAN RIAU', 'last_update' => $last_update);
 		$this->load->view('admin/layout/wrapper', $data, FALSE);
 	}
 

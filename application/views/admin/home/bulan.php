@@ -27,24 +27,24 @@ $site_config=$this->konfigurasi_model->listing(); ?>
           <div class="row">
             <div class="col-md-12 id="menu">
               <div class="user-btn-wrapper">
-                <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Pendaftaran Penduduk</div>
                 </a>
-                <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/pencatatan_sipil'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Pencatatan Sipil</div>
                 </a>
                 <hr>
                 <span class="pull-right">
-                 <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                 <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Hari</div>
                 </a>
-                <a href="<?php echo base_url('home/bulan'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/bulan'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Bulan</div>
                 </a>
-                <a href="<?php echo base_url('home/tahun'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/tahun'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Tahun</div>
                 </a>
-                <a href="<?php echo base_url('home/keseluruhan'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/keseluruhan'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Keseluruhan</div>
                 </a>
                 </span>
@@ -63,7 +63,7 @@ $site_config=$this->konfigurasi_model->listing(); ?>
             <div class="row">
               <?php foreach($pelayanan as $pelayanan) { ?>
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
-              <a href="<?php echo base_url('home/pendaftaran_penduduk/'.$this->encrypt->encode($pelayanan->id_layanan)); ?>">
+              <a href="<?php echo base_url('admin/home/pendaftaran_penduduk/'.$this->encrypt->encode($pelayanan->id_layanan)); ?>">
               <div class="card card-status">
                 <div class="media">
                   <div class="media-body">

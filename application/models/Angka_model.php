@@ -37,9 +37,45 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function listing_bulan_ini_1()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
+	public function listing_tahun_ini_1()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
+	public function listing_keseluruhan_1()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
 	public function listing_hari_ini_2($tanggal_hari_ini)
 	{
 		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && angka.tanggal_angka='$tanggal_hari_ini' where kategori_layanan='2' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
+	public function listing_bulan_ini_2()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='2' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
+	public function listing_tahun_ini_2()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='2' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->result();
+	}
+
+	public function listing_keseluruhan_2()
+	{
+		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='2' group by layanan.id_layanan order by jumlah_angka desc");
 		return $query->result();
 	}
 

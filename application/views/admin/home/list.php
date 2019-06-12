@@ -38,13 +38,13 @@ $site_config=$this->konfigurasi_model->listing(); ?>
                  <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Hari</div>
                 </a>
-                <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/bulan'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Bulan</div>
                 </a>
-                <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/tahun'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Tahun</div>
                 </a>
-                <a href="<?php echo base_url('admin/home'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('admin/home/keseluruhan'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Keseluruhan</div>
                 </a>
                 </span>

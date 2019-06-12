@@ -27,24 +27,24 @@ $site_config=$this->konfigurasi_model->listing(); ?>
           <div class="row">
             <div class="col-md-12 id="menu">
               <div class="user-btn-wrapper">
-                <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                <a href="<?php echo base_url(); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Pendaftaran Penduduk</div>
                 </a>
-                <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Pencatatan Sipil</div>
                 </a>
                 <hr>
                 <span class="pull-right">
-                 <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                 <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Hari</div>
                 </a>
-                <a href="<?php echo base_url('home/bulan'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home/pencatatan_sipil_bulan'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Bulan</div>
                 </a>
-                <a href="<?php echo base_url('home/tahun'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home/pencatatan_sipil_tahun'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Tahun</div>
                 </a>
-                <a href="<?php echo base_url('home/keseluruhan'); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home/pencatatan_sipil_keseluruhan'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Keseluruhan</div>
                 </a>
                 </span>

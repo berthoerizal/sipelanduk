@@ -1,3 +1,5 @@
+<?php 
+$site_config=$this->konfigurasi_model->listing(); ?> 
 <div class="slim-mainpanel">
       <div class="container">
         <div class="slim-pageheader">
@@ -18,7 +20,7 @@
             <li class="breadcrumb-item"><b><?php echo $hari_ini; ?>, <?php echo date('d M Y'); ?></b> Last Updated at <?php
             foreach($last_update as $last_update){ echo date("H:i:s",strtotime($last_update->tanggal_update)); }?></li>
           </ol>
-          <h6 class="slim-pagetitle"><?php echo $title; ?></h6>
+          <h6 class="slim-pagetitle"><?php echo $site_config->alamat; ?></h6>
         </div><!-- slim-pageheader -->
 
         <div class="section-wrapper">
@@ -31,6 +33,21 @@
                 <a href="<?php echo base_url('admin/home/pencatatan_sipil'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Pencatatan Sipil</div>
                 </a>
+                <hr>
+                <span class="pull-right">
+                 <a href="<?php echo base_url('admin/home/pencatatan_sipil'); ?>" class="btn btn-outline-primary">
+                  <div class="tx-15">Hari</div>
+                </a>
+                <a href="<?php echo base_url('admin/home/pencatatan_sipil_bulan'); ?>" class="btn btn-outline-light">
+                  <div class="tx-15">Bulan</div>
+                </a>
+                <a href="<?php echo base_url('admin/home/pencatatan_sipil_tahun'); ?>" class="btn btn-outline-light">
+                  <div class="tx-15">Tahun</div>
+                </a>
+                <a href="<?php echo base_url('admin/home/pencatatan_sipil_keseluruhan'); ?>" class="btn btn-outline-light">
+                  <div class="tx-15">Keseluruhan</div>
+                </a>
+                </span>
               </div>
             </div>
           </div><br>
