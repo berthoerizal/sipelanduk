@@ -33,26 +33,74 @@ class Angka_model extends CI_Model {
 
 	public function listing_hari_ini_1($tanggal_hari_ini)
 	{
-		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && angka.tanggal_angka='$tanggal_hari_ini' where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && angka.tanggal_angka='$tanggal_hari_ini' where kategori_layanan='1' && (slug_layanan!='kedatangan-(berdasarkan-anggota)' && slug_layanan!='perpindahan-(berdasarkan-anggota)') group by layanan.id_layanan order by jumlah_angka desc");
 		return $query->result();
+	}
+
+	public function listing_hari_ini_kedatangan_anggota_1($tanggal_hari_ini)
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && angka.tanggal_angka='$tanggal_hari_ini' where kategori_layanan='1' && slug_layanan='kedatangan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
+	}
+
+	public function listing_hari_ini_perpindahan_anggota_1($tanggal_hari_ini)
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && angka.tanggal_angka='$tanggal_hari_ini' where kategori_layanan='1' && slug_layanan='perpindahan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
 	}
 
 	public function listing_bulan_ini_1()
 	{
-		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='1' && (slug_layanan!='kedatangan-(berdasarkan-anggota)' && slug_layanan!='perpindahan-(berdasarkan-anggota)') group by layanan.id_layanan order by jumlah_angka desc");
 		return $query->result();
+	}
+
+	public function listing_bulan_ini_kedatangan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='1' && slug_layanan='kedatangan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
+	}
+
+	public function listing_bulan_ini_perpindahan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && month(current_date()) where kategori_layanan='1' && slug_layanan='perpindahan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
 	}
 
 	public function listing_tahun_ini_1()
 	{
-		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='1' && (slug_layanan!='kedatangan-(berdasarkan-anggota)' && slug_layanan!='perpindahan-(berdasarkan-anggota)') group by layanan.id_layanan order by jumlah_angka desc");
 		return $query->result();
+	}
+
+	public function listing_tahun_ini_kedatangan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='1' && slug_layanan='kedatangan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
+	}
+
+	public function listing_tahun_ini_perpindahan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan && year(current_date()) where kategori_layanan='1' && slug_layanan='perpindahan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
 	}
 
 	public function listing_keseluruhan_1()
 	{
-		$query=$this->db->query("select layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='1' group by layanan.id_layanan order by jumlah_angka desc");
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='1' && (slug_layanan!='kedatangan-(berdasarkan-anggota)' && slug_layanan!='perpindahan-(berdasarkan-anggota)') group by layanan.id_layanan order by jumlah_angka desc");
 		return $query->result();
+	}
+
+	public function listing_keseluruhan_kedatangan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='1' && slug_layanan='kedatangan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
+	}
+
+	public function listing_keseluruhan_perpindahan_anggota_1()
+	{
+		$query=$this->db->query("select layanan.slug_layanan as slug_layanan, layanan.nama_layanan as nama_layanan, layanan.id_layanan as id_layanan, sum(angka.jumlah_angka) as jumlah_angka from layanan left join angka on layanan.id_layanan=angka.id_layanan where kategori_layanan='1' && slug_layanan='perpindahan-(berdasarkan-anggota)' group by layanan.id_layanan order by jumlah_angka desc");
+		return $query->row();
 	}
 
 	public function listing_hari_ini_2($tanggal_hari_ini)
@@ -85,7 +133,19 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function anggota_hari_ini($tanggal_hari_ini,$id_layanan)
+	{
+		$query=$this->db->query("select kota.nama_kota as nama_kota, sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.tanggal_angka='$tanggal_hari_ini' && angka.id_layanan='$id_layanan' group by kota.id_kota order by jumlah_angka desc");
+		return $query->result();
+	}
+
 	public function total_hari_ini($tanggal_hari_ini,$id_layanan)
+	{
+		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.tanggal_angka='$tanggal_hari_ini' && angka.id_layanan='$id_layanan' group by kota.id_kota) as hari_ini");
+		return $query->row();
+	}
+
+	public function total_anggota_hari_ini($tanggal_hari_ini,$id_layanan)
 	{
 		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.tanggal_angka='$tanggal_hari_ini' && angka.id_layanan='$id_layanan' group by kota.id_kota) as hari_ini");
 		return $query->row();
@@ -97,7 +157,19 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function anggota_bulan_ini($id_layanan)
+	{
+		$query=$this->db->query("select kota.nama_kota as nama_kota, sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && month(current_date()) group by kota.id_kota order by jumlah_angka desc");
+		return $query->result();
+	}
+
 	public function total_bulan_ini($id_layanan)
+	{
+		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && month(current_date()) group by kota.id_kota) as bulan_ini");
+		return $query->row();
+	}
+
+	public function total_anggota_bulan_ini($id_layanan)
 	{
 		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && month(current_date()) group by kota.id_kota) as bulan_ini");
 		return $query->row();
@@ -109,7 +181,19 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function anggota_tahun_ini($id_layanan)
+	{
+		$query=$this->db->query("select kota.nama_kota as nama_kota, sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && year(current_date()) group by kota.id_kota order by jumlah_angka desc");
+		return $query->result();
+	}
+
 	public function total_tahun_ini($id_layanan)
+	{
+		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && year(current_date()) group by kota.id_kota) as tahun_ini");
+		return $query->row();
+	}
+
+	public function total_anggota_tahun_ini($id_layanan)
 	{
 		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' && year(current_date()) group by kota.id_kota) as tahun_ini");
 		return $query->row();
@@ -121,7 +205,19 @@ class Angka_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function anggota_keseluruhan($id_layanan)
+	{
+		$query=$this->db->query("select kota.nama_kota as nama_kota, sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' group by kota.id_kota order by jumlah_angka desc");
+		return $query->result();
+	}
+
 	public function total_keseluruhan($id_layanan)
+	{
+		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' group by kota.id_kota) as keseluruhan");
+		return $query->row();
+	}
+
+	public function total_anggota_keseluruhan($id_layanan)
 	{
 		$query=$this->db->query("select sum(jumlah_angka) as jumlah_angka from (select sum(angka.jumlah_angka) as jumlah_angka from kota left join angka on kota.id_kota=angka.id_kota && angka.id_layanan='$id_layanan' group by kota.id_kota) as keseluruhan");
 		return $query->row();

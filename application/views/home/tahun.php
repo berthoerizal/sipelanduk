@@ -27,7 +27,7 @@ $site_config=$this->konfigurasi_model->listing(); ?>
           <div class="row">
             <div class="col-md-12 id="menu">
               <div class="user-btn-wrapper">
-                <a href="<?php echo base_url(); ?>" class="btn btn-outline-primary">
+                <a href="<?php echo base_url('home'); ?>" class="btn btn-outline-primary">
                   <div class="tx-15">Pendaftaran Penduduk</div>
                 </a>
                 <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-light">
@@ -61,7 +61,48 @@ $site_config=$this->konfigurasi_model->listing(); ?>
         <div class="row">
           <div class="col-md-12">
             <div class="row">
-              <?php foreach($pelayanan as $pelayanan) { ?>
+            <?php foreach($pelayanan as $pelayanan) { ?>
+              <?php if($pelayanan->slug_layanan=='kedatangan'){ ?>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+              <a href="<?php echo base_url('home/pendaftaran_penduduk_kedatangan_anggota/'.$this->encrypt->encode($pelayanan->id_layanan)); ?>">
+              <div class="card card-status">
+                <div class="media">
+                  <div class="media-body">
+                  <?php if($pelayanan->jumlah_angka==NULL){
+                    $pelayanan->jumlah_angka=0;
+                  } if($kedatangan_anggota->jumlah_angka==NULL){
+                    $kedatangan_anggota->jumlah_angka=0;
+                  } ?>
+                    <span>
+                    <h1 class="pull-right"><?php echo $pelayanan->jumlah_angka; ?> (<?php echo $kedatangan_anggota->jumlah_angka; ?>)</h1><br><br>
+                    <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right"><?php 
+                    echo $pelayanan->nama_layanan; ?></p></span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+              </div><!-- card -->
+              </a>
+              </div><!-- col-3 -->
+              <?php } elseif($pelayanan->slug_layanan=='perpindahan') { ?>
+              <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
+              <a href="<?php echo base_url('home/pendaftaran_penduduk_perpindahan_anggota/'.$this->encrypt->encode($pelayanan->id_layanan)); ?>">
+              <div class="card card-status">
+                <div class="media">
+                  <div class="media-body">
+                  <?php if($pelayanan->jumlah_angka==NULL){
+                    $pelayanan->jumlah_angka=0;
+                  } if($perpindahan_anggota->jumlah_angka==NULL){
+                    $perpindahan_anggota->jumlah_angka=0;
+                  } ?>
+                    <span>
+                    <h1 class="pull-right"><?php echo $pelayanan->jumlah_angka; ?> (<?php echo $perpindahan_anggota->jumlah_angka; ?>)</h1><br><br>
+                    <p style="color: black; font-weight: bold; text-transform: capitalize;" class="pull-right"><?php 
+                    echo $pelayanan->nama_layanan; ?></p></span>
+                  </div><!-- media-body -->
+                </div><!-- media -->
+              </div><!-- card -->
+              </a>
+              </div><!-- col-3 -->
+              <?php } else {?>
               <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" style="margin-bottom: 20px;">
               <a href="<?php echo base_url('home/pendaftaran_penduduk/'.$this->encrypt->encode($pelayanan->id_layanan)); ?>">
               <div class="card card-status">
@@ -80,7 +121,7 @@ $site_config=$this->konfigurasi_model->listing(); ?>
               </div><!-- card -->
               </a>
               </div><!-- col-3 -->
-              <?php } ?>
+              <?php }} ?>
             </div>
           </div>
         </div>

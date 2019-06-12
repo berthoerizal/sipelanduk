@@ -27,7 +27,7 @@ $site_config=$this->konfigurasi_model->listing(); ?>
           <div class="row">
             <div class="col-md-12 id="menu">
               <div class="user-btn-wrapper">
-                <a href="<?php echo base_url(); ?>" class="btn btn-outline-light">
+                <a href="<?php echo base_url('home'); ?>" class="btn btn-outline-light">
                   <div class="tx-15">Pendaftaran Penduduk</div>
                 </a>
                 <a href="<?php echo base_url('home/pencatatan_sipil'); ?>" class="btn btn-outline-primary">
