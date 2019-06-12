@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Jun 11, 2019 at 06:56 PM
--- Server version: 10.2.23-MariaDB-cll-lve
--- PHP Version: 7.2.7
+-- Host: 127.0.0.1
+-- Generation Time: Jun 12, 2019 at 04:46 AM
+-- Server version: 10.1.8-MariaDB
+-- PHP Version: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -19,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `doky8449_sipelanduk`
+-- Database: `db_sipelanduk`
 --
 
 -- --------------------------------------------------------
@@ -33,27 +31,29 @@ CREATE TABLE `angka` (
   `id_kota` int(11) NOT NULL,
   `id_layanan` int(11) NOT NULL,
   `jumlah_angka` int(11) NOT NULL,
-  `tanggal_angka` date NOT NULL
+  `tanggal_angka` date NOT NULL,
+  `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `angka`
 --
 
-INSERT INTO `angka` (`id_angka`, `id_kota`, `id_layanan`, `jumlah_angka`, `tanggal_angka`) VALUES
-(10, 3, 5, 100, '2019-06-20'),
-(11, 3, 3, 205, '2019-06-19'),
-(12, 3, 6, 200, '2019-06-05'),
-(13, 3, 6, 200, '2019-06-06'),
-(14, 3, 7, 100, '2019-06-08'),
-(15, 3, 4, 20, '2019-06-06'),
-(16, 3, 3, 300, '2019-06-06'),
-(17, 3, 7, 10, '2019-06-06'),
-(18, 3, 9, 50, '2019-06-06'),
-(19, 2, 3, 100, '2019-06-06'),
-(20, 2, 3, 50, '2019-06-07'),
-(21, 3, 9, 20, '2019-06-09'),
-(22, 3, 11, 50, '2019-06-14');
+INSERT INTO `angka` (`id_angka`, `id_kota`, `id_layanan`, `jumlah_angka`, `tanggal_angka`, `tanggal_update`) VALUES
+(10, 3, 5, 100, '2019-06-20', '2019-06-11 12:41:51'),
+(11, 3, 3, 205, '2019-06-19', '2019-06-11 12:41:51'),
+(12, 3, 6, 200, '2019-06-05', '2019-06-11 12:41:51'),
+(13, 3, 6, 200, '2019-06-06', '2019-06-11 12:41:51'),
+(14, 3, 7, 100, '2019-06-08', '2019-06-11 12:41:51'),
+(15, 3, 4, 20, '2019-06-06', '2019-06-11 12:41:51'),
+(16, 3, 3, 300, '2019-06-06', '2019-06-11 12:41:51'),
+(17, 3, 7, 10, '2019-06-06', '2019-06-11 12:41:51'),
+(18, 3, 9, 50, '2019-06-06', '2019-06-11 12:41:51'),
+(19, 2, 3, 100, '2019-06-06', '2019-06-11 12:41:51'),
+(20, 2, 3, 50, '2019-06-07', '2019-06-11 12:41:51'),
+(21, 3, 9, 20, '2019-06-09', '2019-06-11 12:41:51'),
+(22, 3, 11, 50, '2019-06-14', '2019-06-11 12:41:51'),
+(23, 6, 11, 20, '2019-06-11', '2019-06-11 12:43:54');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE `konfigurasi` (
   `deskripsi` text NOT NULL,
   `alamat` text NOT NULL,
   `metatext` text NOT NULL,
-  `tanggal` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -163,7 +163,7 @@ CREATE TABLE `user` (
   `id_kota` int(11) NOT NULL,
   `nomor_telepon` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `tanggal_daftar` timestamp NOT NULL DEFAULT current_timestamp()
+  `tanggal_daftar` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -219,33 +219,27 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `angka`
 --
 ALTER TABLE `angka`
-  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
-
+  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
 ALTER TABLE `konfigurasi`
   MODIFY `id_konfigurasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
 --
 -- AUTO_INCREMENT for table `kota`
 --
 ALTER TABLE `kota`
   MODIFY `id_kota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
 --
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
   MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
-
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
