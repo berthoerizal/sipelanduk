@@ -97,8 +97,10 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <?php if($status_layanan!=1) { ?>
                                     <th>LK</th>
                                     <th>PR</th>
+                                    <?php } ?>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -106,8 +108,10 @@
                                 <?php foreach($pelayanan_hari_ini as $pelayanan_hari_ini) { ?>
                                 <tr>
                                     <td><?php echo $pelayanan_hari_ini->nama_kota; ?></td>
-                                    <td><?php if($pelayanan_hari_ini->lk==0 || $pelayanan_hari_ini->lk==NULL){ echo "-"; } else { echo $pelayanan_hari_ini->lk; } ?></td>
-                                    <td><?php if($pelayanan_hari_ini->pr==0 || $pelayanan_hari_ini->pr==NULL) { echo "-"; } else { echo $pelayanan_hari_ini->pr; } ?></td>
+                                    <?php if($status_layanan!=1) { ?>
+                                    <td><?php echo $pelayanan_hari_ini->lk; ?></td>
+                                    <td><?php echo $pelayanan_hari_ini->pr; ?></td>
+                                    <?php } ?>
                                     <td><?php if($pelayanan_hari_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -128,8 +132,10 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <?php if($status_layanan!=1) { ?>
                                     <th>LK</th>
                                     <th>PR</th>
+                                    <?php } ?>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -137,8 +143,10 @@
                                 <?php foreach($pelayanan_bulan_ini as $pelayanan_bulan_ini) { ?>
                                 <tr>
                                     <td><?php echo $pelayanan_bulan_ini->nama_kota; ?></td>
-                                    <td><?php if($pelayanan_bulan_ini->lk==0 || $pelayanan_bulan_ini->lk==NULL){ echo "-"; } else { echo $pelayanan_bulan_ini->lk; } ?></td>
-                                    <td><?php if($pelayanan_bulan_ini->pr==0 || $pelayanan_bulan_ini->pr==NULL) { echo "-"; } else { echo $pelayanan_bulan_ini->pr; } ?></td>
+                                    <?php if($status_layanan!=1) { ?>
+                                    <td><?php echo $pelayanan_bulan_ini->lk; ?></td>
+                                    <td><?php echo $pelayanan_bulan_ini->pr; ?></td>
+                                    <?php } ?>
                                     <td><?php if($pelayanan_bulan_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -159,8 +167,10 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <?php if($status_layanan!=1) { ?>
                                     <th>LK</th>
                                     <th>PR</th>
+                                    <?php } ?>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -168,8 +178,10 @@
                                 <?php foreach($pelayanan_tahun_ini as $pelayanan_tahun_ini) { ?>
                                 <tr>
                                     <td><?php echo $pelayanan_tahun_ini->nama_kota; ?></td>
-                                    <td><?php if($pelayanan_tahun_ini->lk==0 || $pelayanan_tahun_ini->lk==NULL){ echo "-"; } else { echo $pelayanan_tahun_ini->lk; } ?></td>
-                                    <td><?php if($pelayanan_tahun_ini->pr==0 || $pelayanan_tahun_ini->pr==NULL) { echo "-"; } else { echo $pelayanan_tahun_ini->pr; } ?></td>
+                                    <?php if($status_layanan!=1) { ?>
+                                    <td><?php echo $pelayanan_tahun_ini->lk; ?></td>
+                                    <td><?php echo $pelayanan_tahun_ini->pr; ?></td>
+                                    <?php } ?>
                                     <td><?php if($pelayanan_tahun_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -190,8 +202,10 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <?php if($status_layanan!=1) { ?>
                                     <th>LK</th>
                                     <th>PR</th>
+                                    <?php } ?>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -199,8 +213,10 @@
                                 <?php foreach($pelayanan_keseluruhan as $pelayanan_keseluruhan) { ?>
                                 <tr>
                                     <td><?php echo $pelayanan_keseluruhan->nama_kota; ?></td>
-                                    <td><?php if($pelayanan_keseluruhan->lk==0 || $pelayanan_keseluruhan->lk==NULL){ echo "-"; } else { echo $pelayanan_keseluruhan->lk; } ?></td>
-                                    <td><?php if($pelayanan_keseluruhan->pr==0 || $pelayanan_keseluruhan->pr==NULL) { echo "-"; } else { echo $pelayanan_keseluruhan->pr; } ?></td>
+                                    <?php if($status_layanan!=1) { ?>
+                                    <td><?php echo $pelayanan_keseluruhan->lk; ?></td>
+                                    <td><?php echo $pelayanan_keseluruhan->pr; ?></td>
+                                    <?php } ?>
                                     <td><?php if($pelayanan_keseluruhan->jumlah_angka==NULL){
                                             echo "0";
                                         } else {

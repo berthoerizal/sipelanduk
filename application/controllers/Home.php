@@ -121,7 +121,7 @@ class Home extends CI_Controller {
 		$count_keseluruhan=$this->angka_model->total_keseluruhan($id_layanan);
 
 		$data = array ('title' => $detail_pelayanan->nama_layanan, 
-						'slug_layanan' => $detail_pelayanan->slug_layanan,
+						'status_layanan' => $detail_pelayanan->status_layanan,
 										'isi' => 'home/detail_pelayanan', 
 										'pelayanan_hari_ini' => $pelayanan_hari_ini,
 										'pelayanan_bulan_ini' => $pelayanan_bulan_ini,
@@ -162,7 +162,7 @@ class Home extends CI_Controller {
 		$count_anggota_keseluruhan=$this->angka_model->total_anggota_keseluruhan($id_anggota);
 
 		$data = array ('title' => $detail_pelayanan->nama_layanan, 
-						'slug_layanan' => $detail_pelayanan->slug_layanan,
+						'status_layanan' => $detail_pelayanan->status_layanan,
 										'isi' => 'home/detail_pelayanan_anggota', 
 										'pelayanan_hari_ini' => $pelayanan_hari_ini,
 										'pelayanan_bulan_ini' => $pelayanan_bulan_ini,
@@ -212,7 +212,7 @@ class Home extends CI_Controller {
 		$count_anggota_keseluruhan=$this->angka_model->total_anggota_keseluruhan($id_anggota);
 
 		$data = array ('title' => $detail_pelayanan->nama_layanan, 
-						'slug_layanan' => $detail_pelayanan->slug_layanan,
+						'status_layanan' => $detail_pelayanan->status_layanan,
 										'isi' => 'home/detail_pelayanan_anggota', 
 										'pelayanan_hari_ini' => $pelayanan_hari_ini,
 										'pelayanan_bulan_ini' => $pelayanan_bulan_ini,

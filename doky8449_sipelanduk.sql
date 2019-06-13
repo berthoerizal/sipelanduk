@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 12, 2019 at 04:46 AM
+-- Generation Time: Jun 13, 2019 at 07:29 PM
 -- Server version: 10.1.8-MariaDB
 -- PHP Version: 5.6.14
 
@@ -30,6 +30,8 @@ CREATE TABLE `angka` (
   `id_angka` int(11) NOT NULL,
   `id_kota` int(11) NOT NULL,
   `id_layanan` int(11) NOT NULL,
+  `lk` int(11) DEFAULT NULL,
+  `pr` int(11) DEFAULT NULL,
   `jumlah_angka` int(11) NOT NULL,
   `tanggal_angka` date NOT NULL,
   `tanggal_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -39,21 +41,31 @@ CREATE TABLE `angka` (
 -- Dumping data for table `angka`
 --
 
-INSERT INTO `angka` (`id_angka`, `id_kota`, `id_layanan`, `jumlah_angka`, `tanggal_angka`, `tanggal_update`) VALUES
-(10, 3, 5, 100, '2019-06-20', '2019-06-11 12:41:51'),
-(11, 3, 3, 205, '2019-06-19', '2019-06-11 12:41:51'),
-(12, 3, 6, 200, '2019-06-05', '2019-06-11 12:41:51'),
-(13, 3, 6, 200, '2019-06-06', '2019-06-11 12:41:51'),
-(14, 3, 7, 100, '2019-06-08', '2019-06-11 12:41:51'),
-(15, 3, 4, 20, '2019-06-06', '2019-06-11 12:41:51'),
-(16, 3, 3, 300, '2019-06-06', '2019-06-11 12:41:51'),
-(17, 3, 7, 10, '2019-06-06', '2019-06-11 12:41:51'),
-(18, 3, 9, 50, '2019-06-06', '2019-06-11 12:41:51'),
-(19, 2, 3, 100, '2019-06-06', '2019-06-11 12:41:51'),
-(20, 2, 3, 50, '2019-06-07', '2019-06-11 12:41:51'),
-(21, 3, 9, 20, '2019-06-09', '2019-06-11 12:41:51'),
-(22, 3, 11, 50, '2019-06-14', '2019-06-11 12:41:51'),
-(23, 6, 11, 20, '2019-06-11', '2019-06-11 12:43:54');
+INSERT INTO `angka` (`id_angka`, `id_kota`, `id_layanan`, `lk`, `pr`, `jumlah_angka`, `tanggal_angka`, `tanggal_update`) VALUES
+(10, 3, 5, NULL, NULL, 100, '2019-06-20', '2019-06-11 12:41:51'),
+(11, 3, 3, NULL, NULL, 205, '2019-06-19', '2019-06-11 12:41:51'),
+(12, 3, 6, NULL, NULL, 200, '2019-06-05', '2019-06-11 12:41:51'),
+(13, 3, 6, NULL, NULL, 200, '2019-06-06', '2019-06-11 12:41:51'),
+(14, 3, 7, NULL, NULL, 100, '2019-06-08', '2019-06-11 12:41:51'),
+(15, 3, 4, NULL, NULL, 20, '2019-06-06', '2019-06-11 12:41:51'),
+(16, 3, 3, NULL, NULL, 300, '2019-06-06', '2019-06-11 12:41:51'),
+(17, 3, 7, NULL, NULL, 10, '2019-06-06', '2019-06-11 12:41:51'),
+(18, 3, 9, NULL, NULL, 50, '2019-06-06', '2019-06-11 12:41:51'),
+(19, 2, 3, NULL, NULL, 100, '2019-06-06', '2019-06-11 12:41:51'),
+(20, 2, 3, NULL, NULL, 50, '2019-06-07', '2019-06-11 12:41:51'),
+(21, 3, 9, NULL, NULL, 20, '2019-06-09', '2019-06-11 12:41:51'),
+(22, 3, 11, NULL, NULL, 50, '2019-06-14', '2019-06-11 12:41:51'),
+(23, 6, 11, NULL, NULL, 20, '2019-06-11', '2019-06-11 12:43:54'),
+(24, 6, 25, NULL, NULL, 300, '2019-06-12', '2019-06-12 10:36:55'),
+(25, 6, 25, NULL, NULL, 50, '2019-06-11', '2019-06-12 10:37:33'),
+(26, 6, 26, NULL, NULL, 15, '1970-01-01', '2019-06-13 10:59:04'),
+(27, 6, 26, 20, 40, 60, '2019-06-13', '2019-06-13 14:07:40'),
+(28, 6, 25, 0, 0, 60, '2019-06-06', '2019-06-13 13:12:56'),
+(29, 6, 25, 20, 10, 30, '2019-06-13', '2019-06-13 17:21:39'),
+(30, 6, 20, 30, 10, 40, '2019-06-13', '2019-06-13 14:08:10'),
+(31, 6, 9, 40, 0, 40, '2019-06-13', '2019-06-13 14:23:33'),
+(32, 6, 8, 0, 70, 70, '2019-06-14', '2019-06-13 17:04:33'),
+(33, 6, 25, 20, 40, 60, '2019-06-14', '2019-06-13 17:17:02');
 
 -- --------------------------------------------------------
 
@@ -116,37 +128,40 @@ CREATE TABLE `layanan` (
   `id_layanan` int(11) NOT NULL,
   `nama_layanan` varchar(50) NOT NULL,
   `slug_layanan` varchar(50) NOT NULL,
-  `kategori_layanan` int(2) NOT NULL
+  `kategori_layanan` int(2) NOT NULL,
+  `status_layanan` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `layanan`
 --
 
-INSERT INTO `layanan` (`id_layanan`, `nama_layanan`, `slug_layanan`, `kategori_layanan`) VALUES
-(1, 'Penerbitan KK', 'penerbitan-kk', 1),
-(3, 'PENERBITAN NIK OA', 'penerbitan-nik-oa', 1),
-(4, 'Penerbitan NIK WNI', 'penerbitan-nik-wni', 1),
-(5, 'Kartu Identitas Anak', 'kartu-identitas-anak', 1),
-(6, 'Akta Kelahiran', 'akta-kelahiran', 2),
-(7, 'Akta Kematian', 'akta-kematian', 2),
-(8, 'Perekaman KTP-EL', 'perekaman-ktp-el', 1),
-(9, 'Pencetakan KTP-EL', 'pencetakan-ktp-el', 1),
-(10, 'Perpindahan', 'perpindahan', 1),
-(11, 'Kedatangan', 'kedatangan', 1),
-(12, 'Akta Perkawinan', 'akta-perkawinan', 2),
-(13, 'Pembatalan Akta Perkawinan', 'pembatalan-akta-perkawinan', 2),
-(14, 'Akta Perceraian', 'akta-perceraian', 2),
-(15, 'Pembatalan Akta Perceraian', 'pembatalan-akta-perceraian', 2),
-(16, 'Perubahan WNI - WNA', 'perubahan-wni-wna', 2),
-(17, 'Perubahan WNA - WNI', 'perubahan-wna-wni', 2),
-(18, 'Pengesahan Anak', 'pengesahan-anak', 2),
-(19, 'Pengangkatan Anak', 'pengangkatan-anak', 2),
-(20, 'Pengakuan Anak', 'pengakuan-anak', 2),
-(21, 'Pembatalan Akta', 'pembatalan-akta', 2),
-(22, 'Pembetulan Akta', 'pembetulan-akta', 2),
-(23, 'Perubahan Nama', 'perubahan-nama', 2),
-(24, 'Perubahan Jenis Kelamin', 'perubahan-jenis-kelamin', 2);
+INSERT INTO `layanan` (`id_layanan`, `nama_layanan`, `slug_layanan`, `kategori_layanan`, `status_layanan`) VALUES
+(1, 'Penerbitan KK', 'penerbitan-kk', 1, 1),
+(3, 'PENERBITAN NIK OA', 'penerbitan-nik-oa', 1, 2),
+(4, 'Penerbitan NIK WNI', 'penerbitan-nik-wni', 1, 2),
+(5, 'Kartu Identitas Anak', 'kartu-identitas-anak', 1, 2),
+(6, 'Akta Kelahiran', 'akta-kelahiran', 2, 2),
+(7, 'Akta Kematian', 'akta-kematian', 2, 2),
+(8, 'Perekaman KTP-EL', 'perekaman-ktp-el', 1, 2),
+(9, 'Pencetakan KTP-EL', 'pencetakan-ktp-el', 1, 2),
+(10, 'Perpindahan', 'perpindahan', 1, 1),
+(11, 'Kedatangan', 'kedatangan', 1, 1),
+(12, 'Akta Perkawinan', 'akta-perkawinan', 2, 1),
+(13, 'Pembatalan Akta Perkawinan', 'pembatalan-akta-perkawinan', 2, 1),
+(14, 'Akta Perceraian', 'akta-perceraian', 2, 1),
+(15, 'Pembatalan Akta Perceraian', 'pembatalan-akta-perceraian', 2, 1),
+(16, 'Perubahan WNI - WNA', 'perubahan-wni-wna', 2, 2),
+(17, 'Perubahan WNA - WNI', 'perubahan-wna-wni', 2, 2),
+(18, 'Pengesahan Anak', 'pengesahan-anak', 2, 2),
+(19, 'Pengangkatan Anak', 'pengangkatan-anak', 2, 2),
+(20, 'Pengakuan Anak', 'pengakuan-anak', 2, 2),
+(21, 'Pembatalan Akta', 'pembatalan-akta', 2, 2),
+(22, 'Pembetulan Akta', 'pembetulan-akta', 2, 2),
+(23, 'Perubahan Nama', 'perubahan-nama', 2, 2),
+(24, 'Perubahan Jenis Kelamin', 'perubahan-jenis-kelamin', 2, 2),
+(25, 'Kedatangan (Berdasarkan Anggota)', 'kedatangan-(berdasarkan-anggota)', 1, 2),
+(26, 'Perpindahan (Berdasarkan Anggota)', 'perpindahan-(berdasarkan-anggota)', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -219,7 +234,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `angka`
 --
 ALTER TABLE `angka`
-  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_angka` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `konfigurasi`
 --
@@ -234,7 +249,7 @@ ALTER TABLE `kota`
 -- AUTO_INCREMENT for table `layanan`
 --
 ALTER TABLE `layanan`
-  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_layanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT for table `user`
 --
