@@ -76,6 +76,8 @@ class Layanan extends CI_Controller {
             $data = array(	'id_layanan'		=> $this->input->post('id_layanan'),
                             'id_kota' 		    => $id_kota,
                             'jumlah_angka'		=> $this->input->post('jumlah_angka'),
+                            'lk'                => $this->input->post('lk'),
+                            'pr'                => $this->input->post('pr'),
                             'tanggal_angka'     => $tanggal_angka
                         ); 
             $id_layanan = $this->input->post('id_layanan');

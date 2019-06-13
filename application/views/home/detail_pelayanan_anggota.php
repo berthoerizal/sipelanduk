@@ -219,6 +219,8 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <th>LK</th>
+                                    <th>PR</th>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -226,6 +228,8 @@
                                 <?php foreach($anggota_hari_ini as $anggota_hari_ini) { ?>
                                 <tr>
                                     <td><?php echo $anggota_hari_ini->nama_kota; ?></td>
+                                    <td><?php if($anggota_hari_ini->lk==0 || $anggota_hari_ini->lk==NULL){ echo "-"; } else { echo $anggota_hari_ini->lk; } ?></td>
+                                    <td><?php if($anggota_hari_ini->pr==0 || $anggota_hari_ini->pr==NULL) { echo "-"; } else { echo $anggota_hari_ini->pr; } ?></td>
                                     <td><?php if($anggota_hari_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -246,6 +250,8 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <th>LK</th>
+                                    <th>PR</th>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -253,6 +259,8 @@
                                 <?php foreach($anggota_bulan_ini as $anggota_bulan_ini) { ?>
                                 <tr>
                                     <td><?php echo $anggota_bulan_ini->nama_kota; ?></td>
+                                    <td><?php if($anggota_bulan_ini->lk==0 || $anggota_bulan_ini->lk==NULL){ echo "-"; } else { echo $anggota_bulan_ini->lk; } ?></td>
+                                    <td><?php if($anggota_bulan_ini->pr==0 || $anggota_bulan_ini->pr==NULL) { echo "-"; } else { echo $anggota_bulan_ini->pr; } ?></td>
                                     <td><?php if($anggota_bulan_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -273,6 +281,8 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <th>LK</th>
+                                    <th>PR</th>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -280,6 +290,8 @@
                                 <?php foreach($anggota_tahun_ini as $anggota_tahun_ini) { ?>
                                 <tr>
                                     <td><?php echo $anggota_tahun_ini->nama_kota; ?></td>
+                                    <td><?php if($anggota_tahun_ini->lk==0 || $anggota_tahun_ini->lk==NULL){ echo "-"; } else { echo $anggota_tahun_ini->lk; } ?></td>
+                                    <td><?php if($anggota_tahun_ini->pr==0 || $anggota_tahun_ini->pr==NULL) { echo "-"; } else { echo $anggota_tahun_ini->pr; } ?></td>
                                     <td><?php if($anggota_tahun_ini->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
@@ -300,6 +312,8 @@
                             <thead>
                                 <tr>
                                     <th>Kota</th>
+                                    <th>LK</th>
+                                    <th>PR</th>
                                     <th>Jumlah Angka</th>
                                 </tr>
                             </thead>
@@ -307,6 +321,8 @@
                                 <?php foreach($anggota_keseluruhan as $anggota_keseluruhan) { ?>
                                 <tr>
                                     <td><?php echo $anggota_keseluruhan->nama_kota; ?></td>
+                                    <td><?php if($anggota_keseluruhan->lk==0 || $anggota_keseluruhan->lk==NULL){ echo "-"; } else { echo $anggota_keseluruhan->lk; } ?></td>
+                                    <td><?php if($anggota_keseluruhan->pr==0 || $anggota_keseluruhan->pr==NULL) { echo "-"; } else { echo $anggota_keseluruhan->pr; } ?></td>
                                     <td><?php if($anggota_keseluruhan->jumlah_angka==NULL){
                                             echo "0";
                                         } else {
