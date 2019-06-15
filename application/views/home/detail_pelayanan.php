@@ -230,6 +230,67 @@
                     </div><!-- table-responsive -->
                 </div> <!-- col -->
             </div> <!-- row -->
+
+            <div class="row">
+                <?php foreach ($graph_hari as $graph_hari) {
+                    $tanggal_angka[] = $graph_hari->tanggal_angka;
+                    $jumlah_angka[] = intval($graph_hari->jumlah_angka);
+                } 
+                ?>
+                <div class="col-md-12">
+                <div id="grafik_hari"></div>
+                </div>
+            </div><!-- row -->
+
         </div><!-- section-wrapper -->
     </div><!-- container -->
 </div><!-- slim-mainpanel -->
+<script>
+    Highcharts.chart('grafik_hari', {
+    chart: {
+        type: 'area'
+    },
+    title: {
+        text: 'GRAFIK PELAYANAN'
+    },
+    subtitle: {
+        text: ''
+    },
+    xAxis: {
+        categories: <?php echo json_encode($tanggal_angka); ?>,
+        tickmarkPlacement: 'on',
+        title: {
+            enabled: true
+        }
+    },
+    yAxis: {
+        title: {
+            text: 'Jumlah Angka'
+        },
+        labels: {
+            formatter: function () {
+                return this.value;
+            }
+        }
+    },
+    tooltip: {
+        split: true,
+        valueSuffix: ''
+    },
+    plotOptions: {
+        area: {
+            stacking: 'normal',
+            lineColor: '#666666',
+            lineWidth: 1,
+            marker: {
+                lineWidth: 1,
+                lineColor: '#666666'
+            }
+        }
+    },
+    series: [{
+        name: '<?php echo $title; ?>',
+        data:  <?php echo json_encode($jumlah_angka); ?>
+    }]
+});
+</script>
