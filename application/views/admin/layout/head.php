@@ -28,12 +28,11 @@ $site_config = $this->konfigurasi_model->listing(); ?>
   <meta property="og:image:height" content="600">
 
   <!-- Meta -->
-  <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
-  <meta name="author" content="ThemePixels">
+  <meta name="description" content="<?php echo $site_config->deskripsi ?>">
+  <meta name="author" content="PDAK">
 
   <title><?php echo $site_config->namaweb; ?></title>
   <meta name="title" content="<?php echo $site_config->metatext ?>">
-  <meta name="description" content="<?php echo $site_config->deskripsi ?>">
   <meta name="keywords" content="<?php echo $site_config->keywords ?>">
 
   <!-- vendor css -->
