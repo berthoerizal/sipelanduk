@@ -277,7 +277,7 @@ class Angka_model extends CI_Model
 
 	function graph_perhari($id_layanan)
 	{
-		$query = $this->db->query("select sum(jumlah_angka) as jumlah_angka,tanggal_angka from angka where id_layanan='$id_layanan' group by tanggal_angka");
+		$query = $this->db->query("select sum(jumlah_angka) as jumlah_angka,tanggal_angka from angka where id_layanan='$id_layanan' && (month(tanggal_angka)=month(current_date())) group by tanggal_angka order by tanggal_angka");
 		return $query->result();
 	}
 }
