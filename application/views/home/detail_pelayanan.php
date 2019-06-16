@@ -233,7 +233,7 @@
 
             <div class="row">
                 <?php foreach ($graph_hari as $graph_hari) {
-                    $tanggal_angka[] = $graph_hari->tanggal_angka;
+                    $tanggal_angka[] = date("d M Y", strtotime($graph_hari->tanggal_angka));
                     $jumlah_angka[] = intval($graph_hari->jumlah_angka);
                 } 
                 ?>
