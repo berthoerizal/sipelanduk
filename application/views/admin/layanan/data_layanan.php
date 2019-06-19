@@ -162,7 +162,7 @@
                                 <td><?php echo date("d", strtotime($angka->tanggal_angka)) . " " . $current_month . " " . date("Y", strtotime($angka->tanggal_angka)); ?></td>
                                 <td> <input type="number" class="form-control" placeholder="Laki-laki" name="lk" id="lk<?php echo $x; ?>" onkeyup="sum<?php echo $x; ?>();" value="<?php echo $angka->lk; ?>"></td>
                                 <td><input type="number" class="form-control" placeholder="Perempuan" name="pr" id="pr<?php echo $x; ?>" onkeyup="sum<?php echo $x; ?>();" value="<?php echo $angka->pr; ?>"></td>
-                                <td><input type="number" class="form-control" placeholder="Jumlah Angka" name="jumlah_angka" id="jumlah_angka<?php echo $x; ?>" value="<?php echo $angka->jumlah_angka; ?>"></td>
+                                <td><input type="number" class="form-control" placeholder="Jumlah Angka" name="jumlah_angka" id="jumlah_angka<?php echo $x; ?>" value="<?php echo $angka->jumlah_angka; ?>" required></td>
                                 <td>
                                     <button type="submit" name="submit" class="btn btn-primary btn-sm"><i class="fa fa-calendar"></i> Edit</button>
                                     <button type="reset" class="btn btn-default btn-sm" onclick="reset<?php echo $x; ?>()"><i class="fa fa-refresh"></i> Reset</button>

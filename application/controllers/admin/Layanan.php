@@ -98,11 +98,15 @@ class Layanan extends CI_Controller
 
     public function data_layanan()
     {
-        $id_kota = $this->session->userdata('id_kota');
-        $angka = $this->angka_model->listing_angka($id_kota);
-        $last_update = $this->angka_model->last_update();
-        $data = array('title' => 'Data Layanan', 'isi' => 'admin/layanan/data_layanan', 'angka' => $angka, 'last_update' => $last_update);
-        $this->load->view('admin/layout/wrapper', $data, FALSE);
+        if ($this->session->userdata('akses_level') == 10) {
+            $id_kota = $this->session->userdata('id_kota');
+            $angka = $this->angka_model->listing_angka($id_kota);
+            $last_update = $this->angka_model->last_update();
+            $data = array('title' => 'Data Layanan', 'isi' => 'admin/layanan/data_layanan', 'angka' => $angka, 'last_update' => $last_update);
+            $this->load->view('admin/layout/wrapper', $data, FALSE);
+        } else {
+            redirect(base_url('error404'));
+        }
     }
 
     public function hapus($id_angka)
