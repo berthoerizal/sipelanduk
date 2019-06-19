@@ -10,6 +10,19 @@ class Angka_model extends CI_Model
 		$this->load->database();
 	}
 
+	public function listing_angka($id_kota)
+	{
+		$this->db->select('angka.*, layanan.*');
+		$this->db->from('angka');
+		//relasi database
+		$this->db->join('layanan', 'layanan.id_layanan = angka.id_layanan', 'left');
+		//end relasi database
+		$this->db->where(array('id_kota' => $id_kota));
+		$this->db->order_by('tanggal_angka', 'desc');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function last_update()
 	{
 		$this->db->select('*');
